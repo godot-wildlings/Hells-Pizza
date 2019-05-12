@@ -7,10 +7,14 @@ var speed = 0
 const MAX_SPEED = 600
 const MASS = 2
 
+var Skin = null
+var target_angle = 0
+
 export var acceleration = 1800
 export var decceleration = 3000
 
 func _ready():
+	Skin = get_node("AnimatedSprite")
 	set_physics_process(true)
 	
 func _physics_process(delta):
@@ -34,7 +38,12 @@ func _physics_process(delta):
 	
 	speed = clamp(speed, 0, MAX_SPEED)
 	
+	
 	motion = speed * direction.normalized()
+	
+	if motion != Vector2():
+		target_angle = atan2(motion.x, motion.y) - PI/2
+		Skin.set_rotation(target_angle)
 	
 	move_and_slide(motion)
 	
