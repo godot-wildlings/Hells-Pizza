@@ -45,6 +45,6 @@ func draw_triangle_equilateral(center=Vector2(), direction=Vector2(), radius=50,
 	var points = [point_1, point_2, point_3]
 	draw_polygon(points, [_color])
 
-
+#warning-ignore:unused_argument
 func _physics_process(delta):
 	update()

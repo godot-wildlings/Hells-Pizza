@@ -13,11 +13,14 @@ var target_angle = 0
 export var acceleration = 1000
 export var decceleration = 3000
 
+var ticks = 0
+
 func _ready():
 	Skin = get_node("AnimatedSprite")
 	set_physics_process(true)
 
 func _physics_process(delta):
+	ticks += 1
 
 	direction = Vector2()
 
@@ -47,4 +50,5 @@ func _physics_process(delta):
 
 	move_and_slide(motion)
 
-	print(str(motion))
+	if ticks % 60 == 0:
+		print(self.name, ". motion == ", str(motion))

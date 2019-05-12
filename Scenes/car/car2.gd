@@ -15,11 +15,15 @@ export var MAX_SPEED = 1200
 var Skin = null
 var target_angle = 0
 
+var ticks : int = 0
+
 func _ready():
 	Skin = get_node("Sprite")
 
 
 func _physics_process(delta):
+	ticks += 1
+
 	direction = Vector2.ZERO
 
 	if Input.is_action_pressed("mv_up"):
@@ -38,7 +42,8 @@ func _physics_process(delta):
 		speed -= decceleration * delta
 
 	speed = clamp(speed, 0, MAX_SPEED)
-	print(speed)
+	if ticks % 60 == 0:
+		print(self.name, " speed == " , speed)
 	target_motion = speed * direction.normalized() * delta
 	steering = target_motion - motion
 
@@ -51,8 +56,11 @@ func _physics_process(delta):
 		motion = Vector2.ZERO
 
 	move_and_collide(motion)
-	print(motion)
+
+	if ticks % 60 == 0:
+		print(self.name, " motion == ", motion)
+
 	if motion != Vector2.ZERO:
 		target_angle = atan2(motion.x, motion.y) - PI / 2
-		#Skin.rotation = target_angle
-		Skin.look_at(position + motion)
+
+		look_at(position + motion)
