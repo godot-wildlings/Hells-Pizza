@@ -6,3 +6,5 @@ var player : KinematicBody2D
 var camera : Camera2D
 #warning-ignore:unused_class_variable
 var camera_focus : Position2D
+#warning-ignore:unused_class_variable
+var map : TileMap
