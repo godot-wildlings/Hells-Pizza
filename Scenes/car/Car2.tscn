@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/car/car2.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Car2/MovementVisualizer.gd" type="Script" id=2]
 [ext_resource path="res://Art/Sprites/moms_car.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/car/DetectTile.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/car/throttle.wav" type="AudioStream" id=5]
 
 [node name="Car2caevv" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -26,3 +27,7 @@ __meta__ = {
 
 [node name="DetectTile" type="Node2D" parent="."]
 script = ExtResource( 4 )
+
+[node name="ThrottleNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+volume_db = -9.0

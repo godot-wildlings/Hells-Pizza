@@ -19,6 +19,8 @@ var ticks : int = 0
 
 func _ready():
 	Skin = get_node("Sprite")
+	$ThrottleNoise.set_volume_db(-48)
+	$ThrottleNoise.play()
 
 
 func _physics_process(delta):
@@ -42,6 +44,8 @@ func _physics_process(delta):
 		speed -= decceleration * delta
 
 	speed = clamp(speed, 0, MAX_SPEED)
+	adjust_volume(speed)
+
 	if ticks % 60 == 0:
 		print(self.name, " speed == " , speed)
 	target_motion = speed * direction.normalized() * delta
@@ -65,3 +69,9 @@ func _physics_process(delta):
 		target_angle = atan2(motion.x, motion.y) - PI / 2
 
 		look_at(position + motion)
+
+func adjust_volume(speed):
+	# this might need to be logarithmic instead of linear
+	var max_vol_db = -9
+	var min_vol_db = -48
+	$ThrottleNoise.set_volume_db(lerp(min_vol_db, max_vol_db, speed/MAX_SPEED))
