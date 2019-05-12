@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Scenes/car/car.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/car/Car2.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/car/car1.tscn" type="PackedScene" id=2]
 
 [node name="Main" type="Node"]
 
-[node name="car" parent="." instance=ExtResource( 1 )]
-position = Vector2( 386, 272 )
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="Car2caevv" parent="." instance=ExtResource( 1 )]
+position = Vector2( 348, 347 )
+
+[node name="car1DB" parent="." instance=ExtResource( 2 )]
+position = Vector2( 347, 221 )

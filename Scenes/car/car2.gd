@@ -50,8 +50,9 @@ func _physics_process(delta):
 	if speed == 0:
 		motion = Vector2.ZERO
 
-	move_and_slide(motion)
+	move_and_collide(motion)
 	print(motion)
 	if motion != Vector2.ZERO:
 		target_angle = atan2(motion.x, motion.y) - PI / 2
-		Skin.rotation = target_angle
+		#Skin.rotation = target_angle
+		Skin.look_at(position + motion)
