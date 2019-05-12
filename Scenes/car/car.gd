@@ -10,7 +10,7 @@ const MASS = 2
 var Skin = null
 var target_angle = 0
 
-export var acceleration = 1800
+export var acceleration = 1000
 export var decceleration = 3000
 
 func _ready():
