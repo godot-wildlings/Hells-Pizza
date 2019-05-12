@@ -55,6 +55,7 @@ func _physics_process(delta):
 	if speed == 0:
 		motion = Vector2.ZERO
 
+	#warning-ignore:return_value_discarded
 	move_and_collide(motion)
 
 	if ticks % 60 == 0:

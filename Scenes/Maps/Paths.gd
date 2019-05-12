@@ -14,7 +14,7 @@ func _ready():
 
 func draw_map(offset : Vector2, size : Vector2):
 	offset -= size/2
-	ticks += 1
+
 
 	var noise : OpenSimplexNoise = OpenSimplexNoise.new()
 
@@ -38,8 +38,9 @@ func draw_map(offset : Vector2, size : Vector2):
 
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# warning-ignore:unused_argument
 func _process(delta):
+	ticks += 1
 	create_map_edges()
 
 func create_map_edges():
