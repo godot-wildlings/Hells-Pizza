@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Maps/Underworld.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Maps/UnderworldGround1.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Maps/UnderworldGround2.jpg" type="Texture" id=3]
 [ext_resource path="res://Scenes/Maps/Paths.gd" type="Script" id=4]
-[ext_resource path="res://Scenes/Maps/UnderworldIntro.ogg" type="AudioStream" id=5]
-[ext_resource path="res://Scenes/Maps/UnderworldLoop.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Scenes/UI/MusicMixer.tscn" type="PackedScene" id=5]
 
 [sub_resource type="TileSet" id=1]
 0/name = "UnderworldGround2.jpg 0"
@@ -76,12 +75,4 @@ cell_size = Vector2( 128, 128 )
 format = 1
 script = ExtResource( 4 )
 
-[node name="BGMusicIntro" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
-volume_db = -12.0
-autoplay = true
-
-[node name="BGMusicLoop" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
-volume_db = -12.0
-[connection signal="finished" from="BGMusicIntro" to="." method="_on_BGMusicIntro_finished"]
+[node name="MusicMixer" parent="." instance=ExtResource( 5 )]

@@ -13,5 +13,3 @@ func _ready():
 #	pass
 
 
-func _on_BGMusicIntro_finished():
-	$BGMusicLoop.play()

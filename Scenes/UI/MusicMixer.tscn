@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Maps/MusicMixer.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Maps/UnderworldIntro.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Scenes/Maps/UnderworldLoop1.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Scenes/Maps/UnderworldLoop2.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Scenes/Maps/UnderworldLoop3.ogg" type="AudioStream" id=5]
+
+[node name="MusicMixer" type="Node"]
+script = ExtResource( 1 )
+
+[node name="BGMusicIntro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -12.0
+autoplay = true
+
+[node name="Loops" type="Node" parent="."]
+
+[node name="BGMusicLoop" type="AudioStreamPlayer" parent="Loops"]
+stream = ExtResource( 3 )
+volume_db = -12.0
+
+[node name="BGMusicLoop2" type="AudioStreamPlayer" parent="Loops"]
+stream = ExtResource( 4 )
+volume_db = -12.0
+
+[node name="BGMusicLoop3" type="AudioStreamPlayer" parent="Loops"]
+stream = ExtResource( 5 )
+volume_db = -12.0
+[connection signal="finished" from="BGMusicIntro" to="." method="_on_BGMusicIntro_finished"]
+[connection signal="finished" from="Loops/BGMusicLoop" to="." method="_on_BGMusicLoop_finished"]
+[connection signal="finished" from="Loops/BGMusicLoop2" to="." method="_on_BGMusicLoop_finished"]
+[connection signal="finished" from="Loops/BGMusicLoop3" to="." method="_on_BGMusicLoop_finished"]
