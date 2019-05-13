@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/UnderworldIntro.ogg-b8ecccdb3d9ea6dd6c4f317acc07ee82.oggstr"
+
+[deps]
+
+source_file="res://Scenes/Maps/UnderworldIntro.ogg"
+dest_files=[ "res://.import/UnderworldIntro.ogg-b8ecccdb3d9ea6dd6c4f317acc07ee82.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

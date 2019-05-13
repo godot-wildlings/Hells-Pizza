@@ -1,12 +1,4 @@
-"""
-Load levels
-Remove levels
-Relay signals and object references if necessary
-
-"""
-
-
-extends Node
+extends Node2D
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -14,8 +6,12 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$CanvasLayer/IntroScreen.show()
+	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_BGMusicIntro_finished():
+	$BGMusicLoop.play()
