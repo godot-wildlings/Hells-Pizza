@@ -51,7 +51,7 @@ func _physics_process(delta):
 	move_and_slide(motion)
 	if ticks == 1:
 		push_warning("move_and_slide() requires framerate-independent velocity. It should not receive delta.")
-
-
-	if ticks % 60 == 0:
-		print(self.name, ". motion == ", str(motion))
+#
+#
+#	if ticks % 60 == 0:
+#		print(self.name, ". motion == ", str(motion))

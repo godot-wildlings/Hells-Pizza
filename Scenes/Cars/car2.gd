@@ -46,8 +46,8 @@ func _physics_process(delta):
 	speed = clamp(speed, 0, MAX_SPEED)
 	adjust_volume(speed)
 
-	if ticks % 60 == 0:
-		print(self.name, " speed == " , speed)
+#	if ticks % 60 == 0:
+#		print(self.name, " speed == " , speed)
 	target_motion = speed * direction.normalized() * delta
 	steering = target_motion - motion
 
@@ -62,8 +62,8 @@ func _physics_process(delta):
 	#warning-ignore:return_value_discarded
 	move_and_collide(motion)
 
-	if ticks % 60 == 0:
-		print(self.name, " motion == ", motion)
+#	if ticks % 60 == 0:
+#		print(self.name, " motion == ", motion)
 
 	if motion != Vector2.ZERO:
 		target_angle = atan2(motion.x, motion.y) - PI / 2

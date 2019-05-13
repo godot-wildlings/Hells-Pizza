@@ -8,7 +8,9 @@ func _ready():
 
 
 func play_random_loop():
-	loops.get_child(randi()%loops.get_child_count()).play()
+	var track_num = randi()%loops.get_child_count()
+	print(self.name , " playing: ", loops.get_child(track_num).name )
+	loops.get_child(track_num).play()
 
 
 func _on_BGMusicIntro_finished():

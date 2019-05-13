@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/MuzakLoop2.ogg-b21ef8d9a5d50c13efc9a1dd9bd7ffc6.oggstr"
+
+[deps]
+
+source_file="res://Scenes/Maps/Overworld/BGMusic/MuzakLoop2.ogg"
+dest_files=[ "res://.import/MuzakLoop2.ogg-b21ef8d9a5d50c13efc9a1dd9bd7ffc6.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
