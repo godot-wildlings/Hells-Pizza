@@ -6,11 +6,8 @@ export var map_height: int = 15
 
 var ticks : int = 0
 
-const HOT_LAVA = 3 # yellow
-const COLD_LAVA = 2 # red
-const BORDER = 1 # black
-const ROAD = 0 # brown
-
+enum tiles { ground, border, lava_cold, lava_hot, water_deep, water_shallow, grass}
+# ^^^^ needs to match the tilemap tile ids
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,14 +26,16 @@ func draw_map(offset : Vector2, size : Vector2):
 				var noise_value : float = noise.get_noise_2d(offset.x + col, offset.y + row)
 				var cell_type : int = 0
 				#print(self.name, "noise_value == ", noise_value)
-				if abs(noise_value) < 0.33:
-					cell_type = ROAD
+				if abs(noise_value) < 0.2:
+					cell_type = tiles.grass
+				elif abs(noise_value) < 0.33:
+					cell_type = tiles.ground
 				elif abs(noise_value) < 0.4:
-					cell_type = BORDER
+					cell_type = tiles.border
 				elif abs(noise_value) < 0.5:
-					cell_type = COLD_LAVA
+					cell_type = tiles.water_shallow
 				else:
-					cell_type = HOT_LAVA
+					cell_type = tiles.water_deep
 
 				set_cell(int(offset.x) + col, int(offset.y) + row, cell_type)
 

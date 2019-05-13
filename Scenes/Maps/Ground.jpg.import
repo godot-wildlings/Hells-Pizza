@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/car.png-31e29206ad041408eb3e05efcc24eee9.stex"
+path="res://.import/Ground.jpg-46b3fa5ab60d3d7668f12a12923c01ac.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Car2/car.png"
-dest_files=[ "res://.import/car.png-31e29206ad041408eb3e05efcc24eee9.stex" ]
+source_file="res://Scenes/Maps/Ground.jpg"
+dest_files=[ "res://.import/Ground.jpg-46b3fa5ab60d3d7668f12a12923c01ac.stex" ]
 
 [params]
 

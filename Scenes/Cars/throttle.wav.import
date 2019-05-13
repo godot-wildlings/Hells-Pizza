@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/throttle.wav-e281c8ab24fb5d88afe2dd6351e61ea3.sample"
+path="res://.import/throttle.wav-34b1702dbdf8b70cb1f960fba69ea7bb.sample"
 
 [deps]
 
-source_file="res://Scenes/car/throttle.wav"
-dest_files=[ "res://.import/throttle.wav-e281c8ab24fb5d88afe2dd6351e61ea3.sample" ]
+source_file="res://Scenes/Cars/throttle.wav"
+dest_files=[ "res://.import/throttle.wav-34b1702dbdf8b70cb1f960fba69ea7bb.sample" ]
 
 [params]
 

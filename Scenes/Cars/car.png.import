@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/UnderworldGround1.png-c189653e7fc8771dcecfea3d21a36509.stex"
+path="res://.import/car.png-2d32bb85aed737b6ee10cdeae0f785a7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Maps/UnderworldGround1.png"
-dest_files=[ "res://.import/UnderworldGround1.png-c189653e7fc8771dcecfea3d21a36509.stex" ]
+source_file="res://Scenes/Cars/car.png"
+dest_files=[ "res://.import/car.png-2d32bb85aed737b6ee10cdeae0f785a7.stex" ]
 
 [params]
 

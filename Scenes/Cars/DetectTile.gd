@@ -13,6 +13,8 @@ func _process(delta):
 	var my_pos : Vector2 = get_global_position()
 	var cell_location : Vector2 = Game.map.world_to_map(my_pos)
 	var cell = Game.map.get_cell(int(cell_location.x), int(cell_location.y))
-
-	if cell == Game.map.HOT_LAVA or cell == Game.map.COLD_LAVA:
+	if cell == Game.map.tiles.lava_hot or cell == Game.map.tiles.lava_cold:
 		print("LAVA!")
+	elif cell == Game.map.tiles.water_deep or cell == Game.map.tiles.water_shallow:
+		print("Water")
+
