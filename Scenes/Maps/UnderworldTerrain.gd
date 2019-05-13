@@ -6,7 +6,7 @@ export var map_height: int = 15
 
 var ticks : int = 0
 
-enum tiles { ground, border, lava_cold, lava_hot, water_deep, water_shallow, grass}
+enum tiles { ground, border, lava_cold, lava_hot, water_deep, water_shallow, grass, asphalt}
 # ^^^^ needs to match the tilemap tile ids
 
 
