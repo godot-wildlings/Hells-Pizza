@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Main/Main.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Maps/Overworld/Overworld.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Main/IntroScreen.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Cars/Car2.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Cars/Camera2D.gd" type="Script" id=5]
-[ext_resource path="res://Scenes/Cars/car1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Cars/car1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Cars/Car3PS.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Cars/Camera2D.gd" type="Script" id=7]
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -24,9 +25,13 @@ position = Vector2( 348, 347 )
 [node name="ChaseCamFocus" type="Position2D" parent="Car2caevv"]
 position = Vector2( 173.534, 7.28052 )
 
-[node name="Camera2D" type="Camera2D" parent="Car2caevv/ChaseCamFocus"]
-current = true
-script = ExtResource( 5 )
-
-[node name="car1DB" parent="." instance=ExtResource( 6 )]
+[node name="car1DB" parent="." instance=ExtResource( 5 )]
 position = Vector2( 347, 221 )
+
+[node name="Car3PS" parent="." instance=ExtResource( 6 )]
+position = Vector2( 350.655, 471.242 )
+
+[node name="Camera2D" type="Camera2D" parent="Car3PS"]
+position = Vector2( 69.3318, 2.03873 )
+current = true
+script = ExtResource( 7 )

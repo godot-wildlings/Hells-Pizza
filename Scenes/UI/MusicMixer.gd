@@ -4,7 +4,12 @@ onready var loops = $Loops
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	set_volume(-40)
+
+func set_volume(vol):
+	$BGMusicIntro.set_volume_db(vol)
+	for loop in loops.get_children():
+		loop.set_volume_db(vol)
 
 
 func play_random_loop():
