@@ -56,3 +56,9 @@ func create_map_edges():
 	draw_map(cell_coords, size)
 
 
+func detect_tile(target_global_pos):
+	var cell_location : Vector2 = world_to_map(target_global_pos)
+
+	draw_map(cell_location, Vector2(5,5))
+	var cell = get_cell(int(cell_location.x), int(cell_location.y))
+	return cell

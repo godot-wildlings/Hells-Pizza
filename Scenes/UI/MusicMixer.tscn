@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/UI/MusicMixer.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Maps/Underworld/BGMusic/UnderworldIntro.ogg" type="AudioStream" id=2]
 [ext_resource path="res://Scenes/Maps/Underworld/BGMusic/UnderworldLoop1.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Scenes/Maps/Underworld/BGMusic/UnderworldLoop2.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Scenes/Maps/Underworld/BGMusic/UnderworldLoop3.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Scenes/Maps/Overworld/BGMusic/DeathLetterBlues.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Scenes/Maps/Overworld/BGMusic/DownHeartedBlues1.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Scenes/Maps/Overworld/BGMusic/DownHeartedBlues2.ogg" type="AudioStream" id=8]
 
 [node name="MusicMixer" type="Node"]
 script = ExtResource( 1 )
@@ -27,7 +30,22 @@ volume_db = -12.0
 [node name="BGMusicLoop3" type="AudioStreamPlayer" parent="Loops"]
 stream = ExtResource( 5 )
 volume_db = -12.0
+
+[node name="BGMusicLoop4" type="AudioStreamPlayer" parent="Loops"]
+stream = ExtResource( 6 )
+volume_db = -12.0
+
+[node name="BGMusicLoop5" type="AudioStreamPlayer" parent="Loops"]
+stream = ExtResource( 7 )
+volume_db = -12.0
+
+[node name="BGMusicLoop6" type="AudioStreamPlayer" parent="Loops"]
+stream = ExtResource( 8 )
+volume_db = -12.0
 [connection signal="finished" from="BGMusicIntro" to="." method="_on_BGMusicIntro_finished"]
 [connection signal="finished" from="Loops/BGMusicLoop" to="." method="_on_BGMusicLoop_finished"]
 [connection signal="finished" from="Loops/BGMusicLoop2" to="." method="_on_BGMusicLoop_finished"]
 [connection signal="finished" from="Loops/BGMusicLoop3" to="." method="_on_BGMusicLoop_finished"]
+[connection signal="finished" from="Loops/BGMusicLoop4" to="." method="_on_BGMusicLoop_finished"]
+[connection signal="finished" from="Loops/BGMusicLoop5" to="." method="_on_BGMusicLoop_finished"]
+[connection signal="finished" from="Loops/BGMusicLoop6" to="." method="_on_BGMusicLoop_finished"]

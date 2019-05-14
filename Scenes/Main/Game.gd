@@ -1,7 +1,7 @@
 extends Node
 
 #warning-ignore:unused_class_variable
-var player : KinematicBody2D
+var player : RigidBody2D
 #warning-ignore:unused_class_variable
 var camera : Camera2D
 #warning-ignore:unused_class_variable

@@ -35,4 +35,3 @@ position = Vector2( 350.655, 471.242 )
 position = Vector2( 70.9185, 2.03873 )
 current = true
 script = ExtResource( 7 )
-
