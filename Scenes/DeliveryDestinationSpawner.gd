@@ -9,7 +9,6 @@ func _ready():
 func spawn_houses():
 	for i in range(num_destinations):
 		spawn_delivery_destination()
-	choose_random_destination()
 
 
 func spawn_delivery_destination():
@@ -27,5 +26,11 @@ func spawn_delivery_destination():
 	new_destination.set_global_position(new_position)
 
 
-func choose_random_destination():
-	Game.player.current_destination = get_children()[randi()%get_child_count()]
+func assign_random_destination():
+	var destination = get_children()[randi()%get_child_count()]
+	Game.player.current_destination = destination
+	destination.set_modulate(Color.lightgreen)
+
+
+func _on_ChooseDestinationTimer_timeout():
+	assign_random_destination()
