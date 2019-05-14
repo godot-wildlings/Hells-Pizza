@@ -32,6 +32,6 @@ position = Vector2( 347, 221 )
 position = Vector2( 350.655, 471.242 )
 
 [node name="Camera2D" type="Camera2D" parent="Car3PS"]
-position = Vector2( 69.3318, 2.03873 )
+position = Vector2( 70.9185, 2.03873 )
 current = true
 script = ExtResource( 7 )

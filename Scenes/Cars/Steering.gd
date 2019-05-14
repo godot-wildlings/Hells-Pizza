@@ -33,3 +33,14 @@ func _process(delta):
 
 	grip_vector = Vector2.RIGHT.rotated(wheel_angle) * tire_grip
 
+func is_turning_wheel() -> bool:
+	var turning = false
+	if Input.is_action_pressed("turn_wheel_clockwise"):
+		turning = true
+	if Input.is_action_pressed("turn_wheel_counterclockwise"):
+		turning = true
+	return turning
+
+func _on_RecenterWheelTimer_timeout():
+	if not is_turning_wheel():
+		wheel_angle -= wheel_turn_increment * 0.1 * sign(wheel_angle)

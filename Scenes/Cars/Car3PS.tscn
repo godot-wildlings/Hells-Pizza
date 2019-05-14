@@ -13,6 +13,8 @@ radius = 22.151
 height = 45.8779
 
 [node name="Car3PS" type="RigidBody2D"]
+linear_damp = 0.8
+angular_damp = 0.8
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -28,6 +30,7 @@ script = ExtResource( 3 )
 
 [node name="ThrottleNoise" type="AudioStreamPlayer2D" parent="Engine"]
 stream = ExtResource( 4 )
+volume_db = -9.0
 
 [node name="Brakes" type="Node2D" parent="."]
 position = Vector2( -28.7945, -0.323532 )
@@ -46,3 +49,8 @@ texture = ExtResource( 7 )
 position = Vector2( 0, 18 )
 scale = Vector2( 0.3, 0.1 )
 texture = ExtResource( 7 )
+
+[node name="RecenterWheelTimer" type="Timer" parent="Steering"]
+wait_time = 0.1
+autostart = true
+[connection signal="timeout" from="Steering/RecenterWheelTimer" to="Steering" method="_on_RecenterWheelTimer_timeout"]
