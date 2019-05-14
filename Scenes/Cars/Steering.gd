@@ -33,6 +33,3 @@ func _process(delta):
 
 	grip_vector = Vector2.RIGHT.rotated(wheel_angle) * tire_grip
 
-	#car.apply_impulse(position, Vector2.RIGHT.rotated(wheel_angle) * tire_grip * delta)
-	var factor : float = 0.003 # lower turns slower
-	car.angular_velocity = wheel_angle * car.engine.speed * factor

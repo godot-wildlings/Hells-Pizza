@@ -13,4 +13,10 @@ func _ready():
 #	pass
 
 func _physics_process(delta):
+	# hmm. setting linear velocity like this means we can't use apply_impulse to spin out.
+
 	set_linear_velocity(Vector2.RIGHT.rotated(rotation) * engine.speed)
+
+	#car.apply_impulse(position, Vector2.RIGHT.rotated(wheel_angle) * tire_grip * delta)
+	var steering_factor : float = 0.005 # lower turns slower
+	set_angular_velocity(steering.wheel_angle * engine.speed * steering_factor)
