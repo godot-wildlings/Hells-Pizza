@@ -1,0 +1,31 @@
+[gd_scene format=2]
+
+[node name="TipTracker" type="HBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 14.0
+custom_constants/separation = 25
+alignment = 1
+
+[node name="CashLabel" type="Label" parent="."]
+margin_left = 399.0
+margin_right = 433.0
+margin_bottom = 14.0
+text = "Cash:"
+
+[node name="CashOnHand" type="Label" parent="."]
+margin_left = 458.0
+margin_right = 494.0
+margin_bottom = 14.0
+text = "$3.21"
+
+[node name="PriceLabel" type="Label" parent="."]
+margin_left = 519.0
+margin_right = 555.0
+margin_bottom = 14.0
+text = "Price:"
+
+[node name="Cost" type="Label" parent="."]
+margin_left = 580.0
+margin_right = 624.0
+margin_bottom = 14.0
+text = "$79.95"

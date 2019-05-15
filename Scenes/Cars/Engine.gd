@@ -40,11 +40,11 @@ func _ready():
 	car = get_parent()
 
 func gear_up():
-	print(self.name, " gearing up." )
+	#print(self.name, " gearing up." )
 	gear = int(clamp(gear + 1, -1, num_gears))
 
 func gear_down():
-	print(self.name, " gearing down." )
+	#print(self.name, " gearing down." )
 	gear = int(clamp(gear - 1, -1, num_gears))
 
 #warning-ignore:unused_argument
@@ -54,8 +54,6 @@ func _input(event):
 
 func _physics_process(delta):
 	ticks += 1
-	if ticks % 60 == 0:
-		print(self.name, " speed == ", speed)
 
 	# report your vector to the car, so it can be relayed to the wheels
 	if Input.is_action_pressed("accelerate"):
@@ -86,9 +84,6 @@ func check_gear():
 	gear_range[0] = max_speed / num_gears * (abs(gear) - 1)
 	gear_range[1] = max_speed / num_gears * abs(gear)
 
-	if ticks % 60 == 0:
-		print("gear range == ", gear_range)
-
 	# might need an exception for reverse gear (-1)
 	if speed < gear_range[0]:
 		gear_down()
@@ -103,10 +98,10 @@ func change_pitch(speed, gear_range):
 
 	var pitch_factor = (speed - gear_range[0]) / (gear_range[1] - gear_range[0])
 
-	if ticks % 60 == 0:
-		print(self.name, " gear == ", gear )
-		print(self.name, " pitch_factor == " , pitch_factor)
-		print(self.name, " speed == ", speed)
-		print(self.name, " max_speed == ", max_speed)
+#	if ticks % 60 == 0:
+#		print(self.name, " gear == ", gear )
+#		print(self.name, " pitch_factor == " , pitch_factor)
+#		print(self.name, " speed == ", speed)
+#		print(self.name, " max_speed == ", max_speed)
 
 	throttle_noise.set_pitch_scale(lerp(0.5, 1.5, clamp(pitch_factor, 0, 1)))

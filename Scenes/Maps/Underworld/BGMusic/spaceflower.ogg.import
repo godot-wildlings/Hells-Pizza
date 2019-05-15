@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/spaceflower.ogg-d7281f7d4604d7648049aac0e73fa38c.oggstr"
+
+[deps]
+
+source_file="res://Scenes/Maps/Underworld/BGMusic/spaceflower.ogg"
+dest_files=[ "res://.import/spaceflower.ogg-d7281f7d4604d7648049aac0e73fa38c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

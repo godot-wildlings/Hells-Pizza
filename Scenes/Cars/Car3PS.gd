@@ -2,11 +2,11 @@ extends RigidBody2D
 
 onready var steering = $Steering
 onready var engine = $Engine
-var current_destination : Area2D
+
 
 
 func _init():
-	Game.player = self
+	pass
 
 func _ready():
 	pass
@@ -29,3 +29,11 @@ func _physics_process(delta):
 	#car.apply_impulse(position, Vector2.RIGHT.rotated(wheel_angle) * tire_grip * delta)
 	var steering_factor : float = 0.005 # lower turns slower
 	set_angular_velocity(steering.wheel_angle * engine.speed * steering_factor)
+
+
+
+
+
+func _on_DestinationDetector_area_entered(area):
+	if area == Game.player.current_destination:
+		print("Yay, you delivered a pizza!")
