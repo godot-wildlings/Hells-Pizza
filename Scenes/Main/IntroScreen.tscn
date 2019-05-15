@@ -3,7 +3,7 @@
 [ext_resource path="res://Scenes/Main/IntroScreen.gd" type="Script" id=1]
 [ext_resource path="res://Art/Sprites/lazy_gamer.png" type="Texture" id=2]
 [ext_resource path="res://Art/Sprites/game_release.png" type="Texture" id=3]
-[ext_resource path="res://Scenes/UI/PizzaDeliveryAd-placeholder.jpg" type="Texture" id=4]
+[ext_resource path="res://Art/Sprites/job_ad.png" type="Texture" id=4]
 
 [node name="IntroScreen" type="PopupPanel"]
 anchor_right = 1.0
