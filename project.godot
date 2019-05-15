@@ -23,6 +23,11 @@ config/icon="res://icon.png"
 
 Game="*res://Scenes/Main/Game.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
 [importer_defaults]
 
 texture={
