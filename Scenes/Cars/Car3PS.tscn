@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Cars/Car3PS.gd" type="Script" id=1]
 [ext_resource path="res://Art/Sprites/moms_car.png" type="Texture" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://Scenes/Maps/DetectTile.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Cars/Radio.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Cars/crash.wav" type="AudioStream" id=11]
+[ext_resource path="res://Scenes/Cars/splash.wav" type="AudioStream" id=12]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 22.151
@@ -18,6 +20,9 @@ height = 45.8779
 [node name="Car3PS" type="RigidBody2D" groups=[
 "cars",
 ]]
+contacts_reported = 1
+contact_monitor = true
+can_sleep = false
 linear_damp = 0.8
 angular_damp = 0.8
 script = ExtResource( 1 )
@@ -66,4 +71,14 @@ autostart = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Radio" parent="CanvasLayer" instance=ExtResource( 10 )]
+
+[node name="CrashNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+
+[node name="HitStunTimer" type="Timer" parent="."]
+
+[node name="SplashNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 12 )
+[connection signal="body_entered" from="." to="." method="_on_Car3PS_body_entered"]
 [connection signal="timeout" from="Steering/RecenterWheelTimer" to="Steering" method="_on_RecenterWheelTimer_timeout"]
+[connection signal="timeout" from="HitStunTimer" to="." method="_on_HitStunTimer_timeout"]

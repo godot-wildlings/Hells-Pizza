@@ -3,7 +3,8 @@ extends RigidBody2D
 onready var steering = $Steering
 onready var engine = $Engine
 
-
+var collision_in_progress : bool = false
+var sinking_in_progress : bool = false
 
 func _init():
 	pass
@@ -30,4 +31,39 @@ func _physics_process(delta):
 	var steering_factor : float = 0.005 # lower turns slower
 	set_angular_velocity(steering.wheel_angle * engine.speed * steering_factor)
 
+	detect_collisions()
+	detect_lakes()
 
+func detect_collisions():
+	var collisions = get_colliding_bodies()
+	if collisions.size() == 0:
+		collision_in_progress = false
+	elif (
+			collision_in_progress == false
+			and collisions.size() > 0
+			and engine.speed > 100
+	):
+		$CrashNoise.play()
+		collision_in_progress = true
+		engine.speed = 0.0
+
+func detect_lakes():
+	if not $DetectTile.is_safe():
+		if sinking_in_progress == false:
+			engine.speed = 0.0
+			$SplashNoise.play()
+			sinking_in_progress = true
+			engine.set_top_speed(20)
+	else: # safe
+		if sinking_in_progress == true:
+			sinking_in_progress = false
+			engine.set_top_speed(180)
+
+func _on_Car3PS_body_entered(body):
+#	$CrashNoise.play()
+	pass
+
+
+
+func _on_HitStunTimer_timeout():
+	pass # Replace with function body.

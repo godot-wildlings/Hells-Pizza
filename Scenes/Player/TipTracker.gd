@@ -21,8 +21,10 @@ func _process(delta):
 		time_remaining -= delta
 		update()
 
+	$PizzaAmmo.set_value(Game.player.pizza_ammo)
+
 func _draw():
-	var clock_rect = $TextureRect
+	var clock_rect = $StopWatch
 	var clock_size : Vector2 = clock_rect.get_size()
 	var clock_pos = clock_rect.get_position() + clock_size/2
 	var radius = clock_size.x / 2
@@ -33,3 +35,4 @@ func _draw():
 func reset_clock():
 	time_remaining = 60.0
 	update()
+

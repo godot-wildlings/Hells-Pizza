@@ -20,7 +20,7 @@ func is_safe() -> bool:
 		print("Lava")
 		safe = false
 	elif tile_type == tiles.water_shallow or tile_type == tiles.water_deep:
-		print("Water")
+		#print("Water")
 		safe = false
 	return safe
 

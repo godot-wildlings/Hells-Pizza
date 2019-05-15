@@ -16,6 +16,7 @@ var state = states.paused
 var cash : float = 0.0
 onready var tip_tracker = $CanvasLayer/TipTracker
 
+var pizza_ammo : int = 0
 
 
 func _init():
@@ -52,12 +53,24 @@ func throw_pizza():
 		vel += get_parent().get_linear_velocity()
 
 	new_pizza.start(pos, vel)
+	pizza_ammo -= 1
+	$PizzaNoise.play()
+
+	if pizza_ammo <= 0:
+		current_destination = Game.map.pizza_factory
 
 
 func _input(event):
 	if Input.is_action_just_pressed("shoot"):
-		throw_pizza()
+		if pizza_ammo > 0:
+			throw_pizza()
 
+func pickup_pizzas():
+	pizza_ammo = 13
+	current_destination = Game.map.pizza_factory.get_random_destination()
+	if tip_tracker.has_method("reset_clock"):
+		tip_tracker.reset_clock()
+	$HurryNoise.play()
 
 func _on_DestinationDetector_area_entered(area):
 	if area == Game.devil:
@@ -66,12 +79,13 @@ func _on_DestinationDetector_area_entered(area):
 
 	elif area == current_destination:
 		if area == Game.map.pizza_factory:
-			current_destination = area.get_random_destination()
-			if tip_tracker.has_method("reset_clock"):
-				tip_tracker.reset_clock()
+			pickup_pizzas()
+
+
 		else:
 			deliver_pizza(area)
 			if tip_tracker.has_method("reset_clock"):
 				tip_tracker.reset_clock()
+
 
 

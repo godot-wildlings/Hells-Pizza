@@ -105,3 +105,9 @@ func change_pitch(speed, gear_range):
 #		print(self.name, " max_speed == ", max_speed)
 
 	throttle_noise.set_pitch_scale(lerp(0.5, 1.5, clamp(pitch_factor, 0, 1)))
+
+
+func set_top_speed(speed : float):
+	top_speed = speed
+	max_speed = top_speed * speed_conversion_factor
+

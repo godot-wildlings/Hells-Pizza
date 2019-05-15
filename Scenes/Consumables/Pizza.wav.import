@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Pizza.wav-97b7a72c46c513abd49f67d04f8fd64c.sample"
+
+[deps]
+
+source_file="res://Scenes/Consumables/Pizza.wav"
+dest_files=[ "res://.import/Pizza.wav-97b7a72c46c513abd49f67d04f8fd64c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

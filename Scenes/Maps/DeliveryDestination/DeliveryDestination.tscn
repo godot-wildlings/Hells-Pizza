@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Maps/DeliveryDestination/DeliveryDestination.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -6,6 +6,9 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 121.759, 118.872 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 62.4843, 63.1893 )
 
 [node name="DeliveryDestination" type="Area2D"]
 script = ExtResource( 1 )
@@ -33,5 +36,10 @@ one_shot = true
 autostart = true
 
 [node name="DestructionTimer" type="Timer" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 2 )
 [connection signal="timeout" from="ScanTimer" to="." method="_on_ScanTimer_timeout"]
 [connection signal="timeout" from="DestructionTimer" to="." method="_on_DestructionTimer_timeout"]
