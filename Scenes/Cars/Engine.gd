@@ -69,10 +69,10 @@ func _physics_process(delta):
 			apply_engine_impulse(delta)
 	else:
 		# idling at speed
-		if abs(speed) > 0.1:
-			throttle_noise.set_volume_db(-20)
+		if abs(speed) > 40:
+			throttle_noise.set_volume_db(-25)
 		else:
-			throttle_noise.set_volume_db(-30)
+			throttle_noise.set_volume_db(-40)
 
 #warning-ignore:unused_argument
 func apply_engine_impulse(delta):

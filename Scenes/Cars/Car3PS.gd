@@ -31,9 +31,3 @@ func _physics_process(delta):
 	set_angular_velocity(steering.wheel_angle * engine.speed * steering_factor)
 
 
-
-
-
-func _on_DestinationDetector_area_entered(area):
-	if area == Game.player.current_destination:
-		print("Yay, you delivered a pizza!")

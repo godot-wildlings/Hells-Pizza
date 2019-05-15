@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/Cars/Car3PS.gd" type="Script" id=1]
 [ext_resource path="res://Art/Sprites/moms_car.png" type="Texture" id=2]
@@ -8,17 +8,12 @@
 [ext_resource path="res://Scenes/Cars/Steering.gd" type="Script" id=6]
 [ext_resource path="res://icon.png" type="Texture" id=7]
 [ext_resource path="res://Scenes/Maps/DetectTile.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/Cars/Compass.gd" type="Script" id=9]
-[ext_resource path="res://Scenes/Cars/CompassArrow.png" type="Texture" id=10]
-[ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Scenes/Cars/Radio.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Cars/Radio.tscn" type="PackedScene" id=10]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 22.151
 height = 45.8779
-
-[sub_resource type="CircleShape2D" id=2]
-radius = 124.003
 
 [node name="Car3PS" type="RigidBody2D"]
 linear_damp = 0.8
@@ -64,31 +59,9 @@ autostart = true
 
 [node name="DetectTile" parent="." instance=ExtResource( 8 )]
 
-[node name="Compass" type="Node2D" parent="."]
-script = ExtResource( 9 )
-
-[node name="Sprite" type="Sprite" parent="Compass"]
-position = Vector2( 61.1478, 0 )
-texture = ExtResource( 10 )
-
-[node name="Compass2" type="Node2D" parent="."]
-script = ExtResource( 9 )
-target = 1
-
-[node name="Sprite" type="Sprite" parent="Compass2"]
-modulate = Color( 1, 0, 0, 1 )
-position = Vector2( 61.1478, 0 )
-texture = ExtResource( 10 )
-
-[node name="DestinationDetector" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DestinationDetector"]
-shape = SubResource( 2 )
-
-[node name="Player" parent="." instance=ExtResource( 11 )]
+[node name="Player" parent="." instance=ExtResource( 9 )]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Radio" parent="CanvasLayer" instance=ExtResource( 12 )]
+[node name="Radio" parent="CanvasLayer" instance=ExtResource( 10 )]
 [connection signal="timeout" from="Steering/RecenterWheelTimer" to="Steering" method="_on_RecenterWheelTimer_timeout"]
-[connection signal="area_entered" from="DestinationDetector" to="." method="_on_DestinationDetector_area_entered"]
