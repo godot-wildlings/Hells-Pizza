@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Main/IntroScreen.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/UI/LazyGamer-placeholder.jpg" type="Texture" id=2]
-[ext_resource path="res://Scenes/UI/simpsons-game-placeholder.jpg" type="Texture" id=3]
+[ext_resource path="res://Art/Sprites/lazy_gamer.png" type="Texture" id=2]
+[ext_resource path="res://Art/Sprites/game_release.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/UI/PizzaDeliveryAd-placeholder.jpg" type="Texture" id=4]
 
 [node name="IntroScreen" type="PopupPanel"]
