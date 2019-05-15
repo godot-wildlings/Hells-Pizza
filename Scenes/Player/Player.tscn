@@ -30,4 +30,6 @@ texture = ExtResource( 3 )
 [node name="DevilCompass" parent="." instance=ExtResource( 4 )]
 modulate = Color( 0.294118, 0, 0, 1 )
 target = 1
+
+[node name="Projectiles" type="Node2D" parent="."]
 [connection signal="area_entered" from="DestinationDetector" to="." method="_on_DestinationDetector_area_entered"]

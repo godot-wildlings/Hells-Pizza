@@ -39,6 +39,21 @@ func deliver_pizza(area):
 		current_destination = Game.map.pizza_factory
 		area.receive_pizza()
 
+func throw_pizza():
+	var pizza_scene = load("res://Scenes/Projectiles/Pizza.tscn")
+	var new_pizza = pizza_scene.instance()
+	$Projectiles.add_child(new_pizza)
+	new_pizza.set_as_toplevel(true)
+	var pos = get_global_position()
+	var speed = 1250.0
+	var vel = (get_global_mouse_position() - pos).normalized() * speed
+	new_pizza.start(pos, vel)
+
+
+func _input(event):
+	if Input.is_action_just_pressed("shoot"):
+		throw_pizza()
+
 
 func _on_DestinationDetector_area_entered(area):
 	if area == Game.devil:

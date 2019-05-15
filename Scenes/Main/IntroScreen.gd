@@ -14,6 +14,10 @@ func next_page():
 	else:
 		tabs.set_current_tab(next_tab)
 
+#warning-ignore:unused_argument
+func _input(event):
+	if Input.is_action_just_pressed("ui_accept"):
+		next_page()
 
 func _on_NextPageButton_pressed():
 	next_page()
