@@ -15,3 +15,5 @@ format = 1
 script = ExtResource( 3 )
 
 [node name="DeliveryDestinations" parent="." instance=ExtResource( 4 )]
+
+[node name="NPCs" type="Node2D" parent="."]

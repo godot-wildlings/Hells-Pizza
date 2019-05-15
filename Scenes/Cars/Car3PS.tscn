@@ -71,6 +71,15 @@ script = ExtResource( 9 )
 position = Vector2( 61.1478, 0 )
 texture = ExtResource( 10 )
 
+[node name="Compass2" type="Node2D" parent="."]
+script = ExtResource( 9 )
+target = 1
+
+[node name="Sprite" type="Sprite" parent="Compass2"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 61.1478, 0 )
+texture = ExtResource( 10 )
+
 [node name="DestinationDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DestinationDetector"]

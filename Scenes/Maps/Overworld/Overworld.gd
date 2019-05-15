@@ -6,7 +6,16 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	spawn_devil()
+
+
+func spawn_devil():
+
+	var devil_scene = load("res://Scenes/NPCs/devil.tscn")
+	var new_devil = devil_scene.instance()
+	$NPCs.add_child(new_devil)
+	new_devil.start()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
