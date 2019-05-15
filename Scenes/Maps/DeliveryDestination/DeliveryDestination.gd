@@ -6,13 +6,31 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	call_deferred("die_on_unstable_terrain")
+	pass
 
 func die_on_unstable_terrain():
 	if has_node("DetectTile"):
 		if $DetectTile.is_grass() == false:
-			call_deferred("queue_free")
+			$DestructionTimer.start()
+
+func die_if_overlapping():
+	var areas = get_overlapping_areas()
+
+	if areas.size() > 0:
+		for area in areas:
+			if get_position_in_parent() < area.get_position_in_parent():
+				$DestructionTimer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_ScanTimer_timeout():
+	die_on_unstable_terrain()
+	die_if_overlapping()
+
+
+
+func _on_DestructionTimer_timeout():
+	call_deferred("queue_free")

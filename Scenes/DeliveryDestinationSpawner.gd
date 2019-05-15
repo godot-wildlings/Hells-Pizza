@@ -23,12 +23,12 @@ func spawn_delivery_destination():
 	var direction : float = rand_range(0, 2*PI)
 	var max_distance : float = 1000
 	var new_position = player_pos + Vector2.RIGHT.rotated(direction) * distance
-	add_child(new_destination)
+	$Destinations.add_child(new_destination)
 	new_destination.set_global_position(new_position)
 
 
 func assign_random_destination():
-	var destination = get_children()[randi()%get_child_count()]
+	var destination = $Destinations.get_children()[randi()%get_child_count()]
 	Game.player.current_destination = destination
 	destination.set_modulate(Color.lightgreen)
 

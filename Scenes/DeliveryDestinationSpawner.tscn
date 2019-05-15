@@ -6,6 +6,9 @@
 script = ExtResource( 1 )
 
 [node name="ChooseDestinationTimer" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="Destinations" type="Node2D" parent="."]
 [connection signal="timeout" from="ChooseDestinationTimer" to="." method="_on_ChooseDestinationTimer_timeout"]

@@ -43,4 +43,5 @@ func is_turning_wheel() -> bool:
 
 func _on_RecenterWheelTimer_timeout():
 	if not is_turning_wheel():
-		wheel_angle -= wheel_turn_increment * 0.1 * sign(wheel_angle)
+		#wheel_angle -= wheel_turn_increment * 0.1 * sign(wheel_angle)
+		wheel_angle = lerp(wheel_angle, 0, 0.33)
