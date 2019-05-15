@@ -15,7 +15,9 @@
 radius = 22.151
 height = 45.8779
 
-[node name="Car3PS" type="RigidBody2D"]
+[node name="Car3PS" type="RigidBody2D" groups=[
+"cars",
+]]
 linear_damp = 0.8
 angular_damp = 0.8
 script = ExtResource( 1 )

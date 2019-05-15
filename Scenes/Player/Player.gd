@@ -47,6 +47,10 @@ func throw_pizza():
 	var pos = get_global_position()
 	var speed = 1250.0
 	var vel = (get_global_mouse_position() - pos).normalized() * speed
+
+	if state == states.driving:
+		vel += get_parent().get_linear_velocity()
+
 	new_pizza.start(pos, vel)
 
 
