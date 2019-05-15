@@ -22,3 +22,17 @@ func die():
 
 func _on_Timer_timeout():
 	call_deferred("die")
+
+
+func deliver_pizza(area):
+	if area.has_method("receive_pizza"):
+		# get your tip, set the compass back to the pizza factory
+		print("You delivered a pizza!")
+		Game.player.cash += rand_range(0.05, 0.50)
+		Game.player.current_destination = Game.map.pizza_factory
+		area.receive_pizza()
+
+
+func _on_Pizza_area_entered(area):
+	if area == Game.player.current_destination:
+		deliver_pizza(area)

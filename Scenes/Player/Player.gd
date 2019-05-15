@@ -40,14 +40,21 @@ func deliver_pizza(area):
 		current_destination = Game.map.pizza_factory
 		area.receive_pizza()
 
-func throw_pizza():
+func drop_pizza():
+	if pizza_ammo > 0:
+		var vel = Vector2.ZERO
+		var speed = 50
+		if state == states.driving:
+			vel += Vector2.RIGHT.rotated(get_parent().rotation) * speed
+		throw_pizza(vel)
+
+func throw_pizza(vel):
 	var pizza_scene = load("res://Scenes/Projectiles/Pizza.tscn")
 	var new_pizza = pizza_scene.instance()
 	$Projectiles.add_child(new_pizza)
 	new_pizza.set_as_toplevel(true)
 	var pos = get_global_position()
-	var speed = 1250.0
-	var vel = (get_global_mouse_position() - pos).normalized() * speed
+
 
 	if state == states.driving:
 		vel += get_parent().get_linear_velocity()
@@ -63,7 +70,10 @@ func throw_pizza():
 func _input(event):
 	if Input.is_action_just_pressed("shoot"):
 		if pizza_ammo > 0:
-			throw_pizza()
+			var pos = get_global_position()
+			var speed = 1250.0
+			var vel = (get_global_mouse_position() - pos).normalized() * speed
+			throw_pizza(vel)
 
 func pickup_pizzas():
 	pizza_ammo = 13
@@ -80,12 +90,11 @@ func _on_DestinationDetector_area_entered(area):
 	elif area == current_destination:
 		if area == Game.map.pizza_factory:
 			pickup_pizzas()
-
-
-		else:
-			deliver_pizza(area)
-			if tip_tracker.has_method("reset_clock"):
-				tip_tracker.reset_clock()
+		# have to throw pizzas now
+#		else:
+#			deliver_pizza(area)
+#			if tip_tracker.has_method("reset_clock"):
+#				tip_tracker.reset_clock()
 
 
 

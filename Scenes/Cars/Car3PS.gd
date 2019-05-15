@@ -46,6 +46,7 @@ func detect_collisions():
 		$CrashNoise.play()
 		collision_in_progress = true
 		engine.speed = 0.0
+		Game.player.drop_pizza()
 
 func detect_lakes():
 	if not $DetectTile.is_safe():
