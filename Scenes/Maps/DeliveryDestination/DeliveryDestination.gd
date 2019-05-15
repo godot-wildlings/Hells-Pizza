@@ -34,3 +34,7 @@ func _on_ScanTimer_timeout():
 
 func _on_DestructionTimer_timeout():
 	call_deferred("queue_free")
+
+func receive_pizza():
+	set_modulate(Color.white)
+	#$CollisionShape2D.call_deferred("set_disabled", true)

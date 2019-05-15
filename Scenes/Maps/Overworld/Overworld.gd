@@ -1,8 +1,13 @@
 extends Node2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+#warning-ignore:unused_class_variable
+onready var terrain = $Terrain
+#warning-ignore:unused_class_variable
+onready var pizza_factory = $PizzaFactory
+
+
+func _init():
+	Game.map = self
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,7 +16,7 @@ func _ready():
 
 func spawn_devil():
 
-	var devil_scene = load("res://Scenes/NPCs/devil.tscn")
+	var devil_scene = load("res://Scenes/NPCs/Devil.tscn")
 	var new_devil = devil_scene.instance()
 	$NPCs.add_child(new_devil)
 	new_devil.start()

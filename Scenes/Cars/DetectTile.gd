@@ -1,5 +1,8 @@
 extends Node2D
 
+onready var terrain = Game.map.terrain
+onready var tiles = Game.map.terrain.tiles
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,25 +15,25 @@ func _process(delta):
 func is_safe() -> bool:
 	var safe : bool = true
 	var my_pos : Vector2 = get_global_position()
-	var tile_type : int = Game.map.detect_tile(my_pos)
-	if tile_type == Game.map.tiles.lava_hot or tile_type == Game.map.tiles.lava_cold:
+	var tile_type : int = terrain.detect_tile(my_pos)
+	if tile_type == tiles.lava_hot or tile_type == tiles.lava_cold:
 		print("Lava")
 		safe = false
-	elif tile_type == Game.map.tiles.water_shallow or tile_type == Game.map.tiles.water_deep:
+	elif tile_type == tiles.water_shallow or tile_type == tiles.water_deep:
 		print("Water")
 		safe = false
 	return safe
 
 func is_asphalt() -> bool:
-	var tile_type : int = Game.map.detect_tile(get_global_position())
-	if tile_type == Game.map.tiles.asphalt:
+	var tile_type : int = terrain.detect_tile(get_global_position())
+	if tile_type == tiles.asphalt:
 		return true
 	else:
 		return false
 
 func is_grass() -> bool:
-	var tile_type : int = Game.map.detect_tile(get_global_position())
-	if tile_type == Game.map.tiles.grass:
+	var tile_type : int = terrain.detect_tile(get_global_position())
+	if tile_type == tiles.grass:
 		return true
 	else:
 		return false

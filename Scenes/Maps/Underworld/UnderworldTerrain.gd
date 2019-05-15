@@ -13,7 +13,7 @@ enum tiles { ground, border, lava_cold, lava_hot, water_deep, water_shallow, gra
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	Game.map = self
+
 
 func draw_map(offset : Vector2, size : Vector2):
 	offset -= size/2

@@ -9,8 +9,9 @@ func _ready():
 
 #warning-ignore:unused_argument
 func _process(delta):
-	if Game.player.current_destination != null:
-		if target == targets.DELIVERY:
+	if target == targets.DELIVERY:
+		if Game.player.current_destination != null:
 			look_at(Game.player.current_destination.get_global_position())
-		elif target == targets.DEVIL:
-			look_at(Game.devil.get_global_position())
+	elif target == targets.DEVIL:
+		look_at(Game.devil.get_global_position())
+

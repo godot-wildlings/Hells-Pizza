@@ -1,10 +1,11 @@
 extends Node2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+onready var terrain = $Terrain
+onready var pizza_factory = $PizzaFactory
 
-# Called when the node enters the scene tree for the first time.
+func _ready():
+	Game.map = self
+
 
 
 
