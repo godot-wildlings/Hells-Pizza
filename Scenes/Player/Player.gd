@@ -86,6 +86,7 @@ func _on_DestinationDetector_area_entered(area):
 	if area == Game.devil:
 		# get a cutscene, get a new car, go to underworld
 		print("DEVIL! Imagine a cool cutscene, a new car, and the underworld map")
+		Game.main.load_level("Underworld")
 
 	elif area == current_destination:
 		if area == Game.map.pizza_factory:

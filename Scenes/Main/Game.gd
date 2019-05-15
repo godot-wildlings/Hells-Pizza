@@ -10,3 +10,5 @@ var camera : Camera2D
 var camera_focus : Node2D
 #warning-ignore:unused_class_variable
 var map : Node
+#warning-ignore:unused_class_variable
+var main : Node
