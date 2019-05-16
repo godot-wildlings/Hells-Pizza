@@ -18,3 +18,4 @@ script = ExtResource( 3 )
 [node name="TransitionToUnderworld" parent="CanvasLayer" instance=ExtResource( 4 )]
 
 [node name="storage" type="Node2D" parent="."]
+
