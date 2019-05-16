@@ -6,6 +6,9 @@ onready var engine = $Engine
 var collision_in_progress : bool = false
 var sinking_in_progress : bool = false
 
+enum states { on, off }
+var state = states.off
+
 func _init():
 	pass
 
@@ -19,6 +22,10 @@ func _ready():
 
 #warning-ignore:unused_argument
 func _physics_process(delta):
+	if state == states.off:
+		return
+
+
 	# hmm. setting linear velocity like this means we can't use apply_impulse to spin out.
 
 	set_linear_velocity(Vector2.RIGHT.rotated(rotation) * engine.speed)
@@ -60,11 +67,29 @@ func detect_lakes():
 			sinking_in_progress = false
 			engine.set_top_speed(180)
 
-func _on_Car3PS_body_entered(body):
-#	$CrashNoise.play()
-	pass
 
 
 
 func _on_HitStunTimer_timeout():
 	pass # Replace with function body.
+
+func shut_off():
+	engine.shut_off()
+	state = states.off
+
+func turn_off():
+	shut_off()
+
+func turn_on():
+	$IgnitionTimer.start()
+	$IgnitionNoise.play()
+
+func add_driver(driver_node):
+	add_pilot(driver_node)
+
+func add_pilot(pilot_node):
+	add_child(pilot_node)
+
+func _on_IgnitionTimer_timeout():
+	engine.turn_on()
+	state = states.on

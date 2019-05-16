@@ -44,11 +44,13 @@ func draw_map(offset : Vector2, size : Vector2):
 # warning-ignore:unused_argument
 func _process(delta):
 	ticks += 1
-	create_map_edges()
+	if Game.camera_focus != null and is_instance_valid(Game.camera_focus):
+		create_map_edges()
 
 func create_map_edges():
 	# remove tiles behind the camera
 	# create new tiles in front of the camera
+
 
 	var pos = Game.camera_focus.get_global_position()
 	var cell_coords = world_to_map(pos)

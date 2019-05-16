@@ -1,18 +1,22 @@
 extends Node2D
 
-onready var terrain = Game.map.terrain
-onready var tiles = Game.map.terrain.tiles
+#onready var terrain = Game.map.terrain
+#onready var tiles = Game.map.terrain.tiles
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
-#warning-ignore:unused_argument
-func _process(delta):
-	pass
+
 
 func is_safe() -> bool:
+	var terrain = Game.map.terrain
+	var tiles = terrain.tiles
+
+	if terrain == null or is_instance_valid(terrain) == false:
+		push_error("Game.map.terrain is not yet registered")
+
 	var safe : bool = true
 	var my_pos : Vector2 = get_global_position()
 	var tile_type : int = terrain.detect_tile(my_pos)
@@ -24,16 +28,37 @@ func is_safe() -> bool:
 		safe = false
 	return safe
 
+
+func get_tile_idx(location):
+	var terrain = Game.map.terrain
+
+	var tile_type : int = terrain.detect_tile(location)
+	return tile_type
+
+
 func is_asphalt() -> bool:
-	var tile_type : int = terrain.detect_tile(get_global_position())
-	if tile_type == tiles.asphalt:
+	var terrain = Game.map.terrain
+	var tiles = terrain.tiles
+
+	if get_tile_idx(get_global_position()) == tiles.asphalt:
 		return true
 	else:
 		return false
 
 func is_grass() -> bool:
-	var tile_type : int = terrain.detect_tile(get_global_position())
-	if tile_type == tiles.grass:
+	var terrain = Game.map.terrain
+	var tiles = terrain.tiles
+	if get_tile_idx(get_global_position()) == tiles.grass:
 		return true
 	else:
 		return false
+
+func is_dirt() -> bool:
+	var terrain = Game.map.terrain
+	var tiles = terrain.tiles
+
+	if get_tile_idx(get_global_position()) == tiles.ground:
+		return true
+	else:
+		return false
+

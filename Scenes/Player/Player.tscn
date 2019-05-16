@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player/TipTracker.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/Player/Compass.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Consumables/Pizza.wav" type="AudioStream" id=5]
 [ext_resource path="res://Scenes/Consumables/Hurry.wav" type="AudioStream" id=6]
+[ext_resource path="res://Scenes/Cars/Camera2D.gd" type="Script" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 67.3903
@@ -40,4 +41,11 @@ stream = ExtResource( 5 )
 
 [node name="HurryNoise" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+smoothing_enabled = true
+script = ExtResource( 7 )
 [connection signal="area_entered" from="DestinationDetector" to="." method="_on_DestinationDetector_area_entered"]

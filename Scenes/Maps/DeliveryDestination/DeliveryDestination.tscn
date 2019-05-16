@@ -31,9 +31,8 @@ text = "House"
 align = 1
 
 [node name="ScanTimer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.5
 one_shot = true
-autostart = true
 
 [node name="DestructionTimer" type="Timer" parent="."]
 

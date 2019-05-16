@@ -6,12 +6,16 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	$ScanTimer.start()
 
 func die_on_unstable_terrain():
 	if has_node("DetectTile"):
-		if $DetectTile.is_grass() == false:
-			$DestructionTimer.start()
+		if Game.map.name == "Overworld":
+			if $DetectTile.is_grass() == false:
+				$DestructionTimer.start()
+		elif Game.map.name == "Underworld":
+			if $DetectTile.is_dirt() == false:
+				$DestructionTimer.start()
 
 func die_if_overlapping():
 	var areas = get_overlapping_areas()
@@ -27,8 +31,13 @@ func die_if_overlapping():
 
 
 func _on_ScanTimer_timeout():
-	die_on_unstable_terrain()
-	die_if_overlapping()
+	if Game.map.terrain != null and is_instance_valid(Game.map.terrain):
+		die_on_unstable_terrain()
+		die_if_overlapping()
+		#print(self.name, " Game.map.terrain == ", Game.map.terrain.name)
+	else:
+		push_warning(self.name + " Game.map.terrain not ready yet. Trying again in " + str($ScanTimer.get_wait_time()) + "s")
+		$ScanTimer.start()
 
 
 

@@ -23,6 +23,9 @@ var gear : int = 0 # zero is neutral
 enum transmission_types { MANUAL, AUTOMATIC }
 var transmission = transmission_types.AUTOMATIC
 
+enum states { on, off }
+var state = states.on
+
 #warning-ignore:unused_class_variable
 var velocity : Vector2 = Vector2.ZERO
 var speed : float = 0.0 # This is what the car needs to know.
@@ -38,6 +41,7 @@ func _ready():
 	throttle_noise.set_volume_db(-48)
 	throttle_noise.play()
 	car = get_parent()
+	state = states.off # wait for turn_on()
 
 func gear_up():
 	#print(self.name, " gearing up." )
@@ -54,6 +58,10 @@ func _input(event):
 
 func _physics_process(delta):
 	ticks += 1
+
+	if state == states.off:
+		return
+
 
 	# report your vector to the car, so it can be relayed to the wheels
 	if Input.is_action_pressed("accelerate"):
@@ -111,3 +119,13 @@ func set_top_speed(speed : float):
 	top_speed = speed
 	max_speed = top_speed * speed_conversion_factor
 
+func shut_off():
+	throttle_noise.set_volume_db(-55)
+	throttle_noise.stop()
+	speed = 0
+
+	state = states.off
+
+func turn_on():
+	throttle_noise.play()
+	state = states.on

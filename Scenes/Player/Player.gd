@@ -17,16 +17,36 @@ var cash : float = 0.0
 onready var tip_tracker = $CanvasLayer/TipTracker
 
 var pizza_ammo : int = 0
+var car : Node2D # probably rigidbody, but we might switch to kinematic
+
+signal met_the_devil(cash_on_hand)
 
 
 func _init():
 	Game.player = self
 
 func _ready():
-	state = states.driving
+	call_deferred("deferred_ready")
+
+func deferred_ready():
+
+
 	$WalkingSprite.hide()
 	current_destination = Game.map.pizza_factory
+	#warning-ignore:return_value_discarded
+	connect("met_the_devil", Game.main, "_on_Player_met_the_devil")
 
+func get_in_car(car_node):
+	if is_instance_valid(get_parent()):
+		get_parent().remove_child(self)
+	car_node.add_pilot(self)
+	car = car_node
+
+	state = states.driving
+	car.turn_on()
+
+	$PizzaCompass.turn_on()
+	$DevilCompass.turn_on()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -48,16 +68,16 @@ func drop_pizza():
 			vel += Vector2.RIGHT.rotated(get_parent().rotation) * speed
 		throw_pizza(vel)
 
-func throw_pizza(vel):
+func throw_pizza(velocity):
+	var vel = velocity
 	var pizza_scene = load("res://Scenes/Projectiles/Pizza.tscn")
 	var new_pizza = pizza_scene.instance()
 	$Projectiles.add_child(new_pizza)
 	new_pizza.set_as_toplevel(true)
 	var pos = get_global_position()
-
-
 	if state == states.driving:
-		vel += get_parent().get_linear_velocity()
+		if get_parent().is_in_group("cars"):
+			vel += get_parent().get_linear_velocity()
 
 	new_pizza.start(pos, vel)
 	pizza_ammo -= 1
@@ -66,14 +86,21 @@ func throw_pizza(vel):
 	if pizza_ammo <= 0:
 		current_destination = Game.map.pizza_factory
 
-
+#warning-ignore:unused_argument
 func _input(event):
-	if Input.is_action_just_pressed("shoot"):
+	if (
+			Input.is_action_just_pressed("shoot")
+			and state != states.dead
+			and state != states.paused
+	):
 		if pizza_ammo > 0:
 			var pos = get_global_position()
 			var speed = 1250.0
 			var vel = (get_global_mouse_position() - pos).normalized() * speed
 			throw_pizza(vel)
+
+
+
 
 func pickup_pizzas():
 	pizza_ammo = 13
@@ -84,18 +111,14 @@ func pickup_pizzas():
 
 func _on_DestinationDetector_area_entered(area):
 	if area == Game.devil:
-		# get a cutscene, get a new car, go to underworld
-		print("DEVIL! Imagine a cool cutscene, a new car, and the underworld map")
-		Game.main.load_level("Underworld")
+		if state == states.driving:
+			car.turn_off()
+
+		emit_signal("met_the_devil", cash)
 
 	elif area == current_destination:
 		if area == Game.map.pizza_factory:
 			pickup_pizzas()
-		# have to throw pizzas now
-#		else:
-#			deliver_pizza(area)
-#			if tip_tracker.has_method("reset_clock"):
-#				tip_tracker.reset_clock()
 
 
 

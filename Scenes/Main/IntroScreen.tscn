@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Scenes/Main/IntroScreen.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Main/UnderworldScreen.gd" type="Script" id=1]
 [ext_resource path="res://Art/Sprites/lazy_gamer.png" type="Texture" id=2]
 [ext_resource path="res://Art/Sprites/game_release.png" type="Texture" id=3]
 [ext_resource path="res://Art/Sprites/job_ad.png" type="Texture" id=4]
@@ -43,7 +43,7 @@ margin_bottom = 540.0
 alignment = 1
 
 [node name="Label" type="Label" parent="TabContainer/Page1/VBoxContainer"]
-margin_right = 936.0
+margin_right = 928.0
 margin_bottom = 48.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -54,8 +54,8 @@ align = 1
 
 [node name="TextureRect" type="TextureRect" parent="TabContainer/Page1/VBoxContainer"]
 margin_top = 52.0
-margin_right = 936.0
-margin_bottom = 432.0
+margin_right = 928.0
+margin_bottom = 424.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 2 )
@@ -63,9 +63,9 @@ expand = true
 stretch_mode = 6
 
 [node name="Label2" type="Label" parent="TabContainer/Page1/VBoxContainer"]
-margin_top = 436.0
-margin_right = 936.0
-margin_bottom = 484.0
+margin_top = 428.0
+margin_right = 928.0
+margin_bottom = 476.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "He wants for nothing.
@@ -74,10 +74,10 @@ text = "He wants for nothing.
 align = 1
 
 [node name="NextPageButton" type="Button" parent="TabContainer/Page1/VBoxContainer"]
-margin_left = 430.0
-margin_top = 488.0
-margin_right = 506.0
-margin_bottom = 508.0
+margin_left = 426.0
+margin_top = 480.0
+margin_right = 502.0
+margin_bottom = 500.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Next Page"
@@ -105,7 +105,7 @@ margin_bottom = 540.0
 alignment = 1
 
 [node name="Label" type="Label" parent="TabContainer/Page2/VBoxContainer"]
-margin_right = 936.0
+margin_right = 928.0
 margin_bottom = 31.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -115,8 +115,8 @@ align = 1
 
 [node name="TextureRect2" type="TextureRect" parent="TabContainer/Page2/VBoxContainer"]
 margin_top = 35.0
-margin_right = 936.0
-margin_bottom = 432.0
+margin_right = 928.0
+margin_bottom = 424.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 3 )
@@ -124,9 +124,9 @@ expand = true
 stretch_mode = 6
 
 [node name="Label2" type="Label" parent="TabContainer/Page2/VBoxContainer"]
-margin_top = 436.0
-margin_right = 936.0
-margin_bottom = 484.0
+margin_top = 428.0
+margin_right = 928.0
+margin_bottom = 476.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "But I have no money.
@@ -135,10 +135,10 @@ text = "But I have no money.
 align = 1
 
 [node name="NextPageButton" type="Button" parent="TabContainer/Page2/VBoxContainer"]
-margin_left = 430.0
-margin_top = 488.0
-margin_right = 506.0
-margin_bottom = 508.0
+margin_left = 426.0
+margin_top = 480.0
+margin_right = 502.0
+margin_bottom = 500.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Next Page"
@@ -166,7 +166,7 @@ margin_bottom = 540.0
 alignment = 1
 
 [node name="Label" type="Label" parent="TabContainer/Page3/VBoxContainer"]
-margin_right = 936.0
+margin_right = 928.0
 margin_bottom = 48.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -177,8 +177,8 @@ align = 1
 
 [node name="TextureRect3" type="TextureRect" parent="TabContainer/Page3/VBoxContainer"]
 margin_top = 52.0
-margin_right = 936.0
-margin_bottom = 432.0
+margin_right = 928.0
+margin_bottom = 424.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 4 )
@@ -186,9 +186,9 @@ expand = true
 stretch_mode = 6
 
 [node name="Label2" type="Label" parent="TabContainer/Page3/VBoxContainer"]
-margin_top = 436.0
-margin_right = 936.0
-margin_bottom = 484.0
+margin_top = 428.0
+margin_right = 928.0
+margin_bottom = 476.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "I'll just borrow mom's car.
@@ -197,10 +197,10 @@ text = "I'll just borrow mom's car.
 align = 1
 
 [node name="NextPageButton" type="Button" parent="TabContainer/Page3/VBoxContainer"]
-margin_left = 430.0
-margin_top = 488.0
-margin_right = 506.0
-margin_bottom = 508.0
+margin_left = 426.0
+margin_top = 480.0
+margin_right = 502.0
+margin_bottom = 500.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Next Page"

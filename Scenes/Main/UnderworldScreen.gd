@@ -10,7 +10,7 @@ func _ready():
 
 func deferred_ready():
 	#warning-ignore:return_value_discarded
-	connect("completed", Game.main, "_on_IntroScreen_completed")
+	connect("completed", Game.main, "_on_UnderworldTransitionScreen_completed")
 
 func next_page():
 	var next_tab = tabs.get_current_tab()+1
