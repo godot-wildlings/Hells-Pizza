@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Main/UnderworldScreen.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/NPCs/devil1.jpg" type="Texture" id=2]
+[ext_resource path="res://Art/Sprites/devil.png" type="Texture" id=2]
 [ext_resource path="res://Art/Sprites/luficers_car.png" type="Texture" id=3]
 
 [node name="TransitionToUnderworld" type="PopupPanel"]
@@ -132,5 +132,6 @@ margin_bottom = 508.0
 size_flags_horizontal = 4
 size_flags_vertical = 12
 text = "Next Page"
+
 [connection signal="pressed" from="TabContainer/Page1/VBoxContainer/NextPageButton" to="." method="_on_NextPageButton_pressed"]
 [connection signal="pressed" from="TabContainer/Page2/VBoxContainer/NextPageButton" to="." method="_on_NextPageButton_pressed"]
