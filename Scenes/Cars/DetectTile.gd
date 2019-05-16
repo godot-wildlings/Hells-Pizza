@@ -12,19 +12,16 @@ func _ready():
 
 func is_safe() -> bool:
 	var terrain = Game.map.terrain
-	var tiles = terrain.tiles
 
 	if terrain == null or is_instance_valid(terrain) == false:
 		push_error("Game.map.terrain is not yet registered")
 
 	var safe : bool = true
 	var my_pos : Vector2 = get_global_position()
-	var tile_type : int = terrain.detect_tile(my_pos)
-	if tile_type == tiles.lava_hot or tile_type == tiles.lava_cold:
-		print("Lava")
+
+	if terrain.compare_tile(my_pos, "lava") == true:
 		safe = false
-	elif tile_type == tiles.water_shallow or tile_type == tiles.water_deep:
-		#print("Water")
+	elif terrain.compare_tile(my_pos, "water") == true:
 		safe = false
 	return safe
 
@@ -39,16 +36,14 @@ func get_tile_idx(location):
 func is_asphalt() -> bool:
 	var terrain = Game.map.terrain
 	var tiles = terrain.tiles
-
-	if get_tile_idx(get_global_position()) == tiles.asphalt:
+	if terrain.compare_tile(get_global_position(), "asphalt") == true:
 		return true
 	else:
 		return false
 
 func is_grass() -> bool:
 	var terrain = Game.map.terrain
-	var tiles = terrain.tiles
-	if get_tile_idx(get_global_position()) == tiles.grass:
+	if terrain.compare_tile(get_global_position(), "grass") == true:
 		return true
 	else:
 		return false
@@ -57,8 +52,9 @@ func is_dirt() -> bool:
 	var terrain = Game.map.terrain
 	var tiles = terrain.tiles
 
-	if get_tile_idx(get_global_position()) == tiles.ground:
+	if terrain.compare_tile(get_global_position(), "dirt") == true:
 		return true
 	else:
 		return false
+
 

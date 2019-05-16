@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Maps/Underworld/Underworld.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Maps/Underworld/underworld_tileset.tres" type="TileSet" id=2]
-[ext_resource path="res://Scenes/Maps/Underworld/UnderworldTerrain.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Maps/TerrainTileset.tres" type="TileSet" id=2]
+[ext_resource path="res://Scenes/Maps/Overworld/Terrain.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/DeliveryDestinationSpawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Maps/PizzaFactory.tscn" type="PackedScene" id=5]
 
@@ -11,9 +11,9 @@ script = ExtResource( 1 )
 
 [node name="UnderworldTerrain" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
-cell_size = Vector2( 128, 128 )
 format = 1
 script = ExtResource( 3 )
+map_name = "Underworld"
 
 [node name="DeliveryDestinations" parent="." instance=ExtResource( 4 )]
 
