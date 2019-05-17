@@ -4,13 +4,14 @@
 [ext_resource path="res://Art/Sprites/skyscraper.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 28, 65 )
+extents = Vector2( 90.3648, 119.76 )
 
-[node name="Skyscraper" instance=ExtResource( 1 )]
+[node name="Skyscraper" index="0" instance=ExtResource( 1 )]
 
 [node name="Sprite" parent="." index="0"]
+position = Vector2( -3.25806, -73.3055 )
+scale = Vector2( 3, 3 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource( 1 )
-
