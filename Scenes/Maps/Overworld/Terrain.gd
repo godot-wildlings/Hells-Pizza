@@ -1,7 +1,7 @@
 extends TileMap
 
-export var map_width: int = 15
-export var map_height: int = 15
+export var map_width: int = 50
+export var map_height: int = 50
 export var map_name: String = "Overworld"
 
 var ticks : int = 0
@@ -101,10 +101,14 @@ func _process(delta):
 		create_map_edges()
 
 func create_map_edges():
-	# remove tiles behind the camera
 	# create new tiles in front of the camera
 
+
 	var pos = Game.camera_focus.get_global_position()
+	var rot = Game.camera_focus.get_global_rotation()
+
+
+
 	var cell_coords = world_to_map(pos)
 	var size = Vector2(map_width,map_height)
 	draw_map(cell_coords, size)

@@ -18,4 +18,3 @@ texture = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="DetectTile" parent="." instance=ExtResource( 3 )]
-
