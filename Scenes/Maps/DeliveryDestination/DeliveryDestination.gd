@@ -50,10 +50,7 @@ func _spawn_entity_based_on_type() -> void:
 
 func _spawn_random_building() -> void:
 	assert Game.building_scenes.size() > 0
-	var random_key_idx : int = randi() % Game.building_scenes.size()
-	var building_scenes_keys : Array = Game.building_scenes.keys()
-	var random_key : String = building_scenes_keys[random_key_idx]
-	assert Game.building_scenes.has(random_key)
+	var random_key : String = _get_random_dict_key(Game.building_scenes)
 	var random_scene : PackedScene = Game.building_scenes.get(random_key)
 	for children in building_container.get_children():
 		building_container.remove_child(children)
@@ -61,7 +58,23 @@ func _spawn_random_building() -> void:
 	building_container.add_child(random_building)
 
 func _spawn_random_demon() -> void:
-	pass
+	assert Game.demon_scenes.size() > 0
+	var random_key : String = _get_random_dict_key(Game.demon_scenes)
+	var random_scene : PackedScene = Game.demon_scenes.get(random_key)
+	for children in demon_container.get_children():
+		demon_container.remove_child(children)
+	var random_demon : Demon = random_scene.instance()
+	demon_container.add_child(random_demon)
+
+
+func _get_random_dict_key(dict : Dictionary) -> String:
+	assert dict.size() > 0
+	var random_key_idx : int = randi() % dict.size()
+	var dict_keys : Array = dict.keys()
+	var random_key : String = dict_keys[random_key_idx]
+	assert dict.has(random_key)
+	
+	return random_key
 
 func _on_DestructionTimer_timeout():
 	call_deferred("queue_free")

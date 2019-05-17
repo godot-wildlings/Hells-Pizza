@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Building",
 "language": "GDScript",
 "path": "res://Scenes/Maps/DeliveryDestination/Buildings/Building.gd"
+}, {
+"base": "RigidBody2D",
+"class": "Demon",
+"language": "GDScript",
+"path": "res://Scenes/Maps/DeliveryDestination/Demons/Demon.gd"
 } ]
 _global_script_class_icons={
-"Building": ""
+"Building": "",
+"Demon": ""
 }
 
 [application]

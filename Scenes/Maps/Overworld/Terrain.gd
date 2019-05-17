@@ -93,7 +93,7 @@ func get_random_tile(tile_group_name):
 		push_warning(self.name + "Can't find any " + tile_group_name + " tile.")
 
 
-# warning-ignore:unused_argument
+#warning-ignore:unused_argument
 func _process(delta):
 	ticks += 1
 
@@ -105,6 +105,7 @@ func create_map_edges():
 
 
 	var pos = Game.camera_focus.get_global_position()
+	#warning-ignore:unused_variable
 	var rot = Game.camera_focus.get_global_rotation()
 
 
