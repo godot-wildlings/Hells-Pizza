@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/Cars/Car3PS.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Cars/Engine.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Scenes/Cars/splash.wav" type="AudioStream" id=10]
 [ext_resource path="res://Scenes/Cars/ignition.wav" type="AudioStream" id=11]
 [ext_resource path="res://Art/Sprites/moms_car.png" type="Texture" id=12]
+[ext_resource path="res://Scenes/Cars/bumpy.wav" type="AudioStream" id=13]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 22.151
@@ -84,6 +85,10 @@ bus = "SFX"
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 12 )
+
+[node name="BumpyNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 13 )
+volume_db = -15.0
 [connection signal="timeout" from="Steering/RecenterWheelTimer" to="Steering" method="_on_RecenterWheelTimer_timeout"]
 [connection signal="timeout" from="HitStunTimer" to="." method="_on_HitStunTimer_timeout"]
 [connection signal="timeout" from="IgnitionTimer" to="." method="_on_IgnitionTimer_timeout"]

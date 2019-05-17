@@ -1,7 +1,7 @@
 extends TileMap
 
-export var map_width: int = 50
-export var map_height: int = 50
+export var map_width: int = 55
+export var map_height: int = 55
 export var map_name: String = "Overworld"
 
 var ticks : int = 0

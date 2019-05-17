@@ -9,6 +9,8 @@ var sinking_in_progress : bool = false
 enum states { on, off }
 var state = states.off
 
+var terrain_speed_reduction = 1.0 # changes in detect_bumps()
+
 func _init():
 	pass
 
@@ -25,38 +27,43 @@ func _physics_process(delta):
 	if state == states.off:
 		return
 
+	var spd = engine.speed * terrain_speed_reduction
 
-	# hmm. setting linear velocity like this means we can't use apply_impulse to spin out.
-
-	set_linear_velocity(Vector2.RIGHT.rotated(rotation) * engine.speed)
-
-
-	#car.apply_impulse(position, Vector2.RIGHT.rotated(wheel_angle) * tire_grip * delta)
-	#var steering_factor : float = 0.005 # lower turns slower
+	set_linear_velocity(Vector2.RIGHT.rotated(rotation) * spd)
 	var steering_factor : float = .01
-
-	#set_angular_velocity(steering.wheel_angle * engine.speed * steering_factor)
-
-	var spd = engine.speed
-	var ratio = engine.speed / engine.max_speed
+	var ratio = spd / engine.max_speed
 
 	# Nice ease out and back for lerping
 	var eased_spd = sin(ratio*4)/2 + ratio
 	# graph: https://www.desmos.com/calculator/ourez6xxg9
 
-
 	var ang_vel = steering.wheel_angle * lerp(0, 6, eased_spd)
-
 	set_angular_velocity(ang_vel)
-
-#	print(engine.speed)
-#	if engine.speed > 50:
-#		set_angular_velocity(clamp(ang_vel, -6, 6))
-#	else:
-#		set_angular_velocity(lerp(get_angular_velocity(), 0.0, 0.6))
 
 	detect_collisions()
 	detect_lakes()
+	detect_bumps()
+
+func detect_bumps():
+	if Game.map.name == "Overworld":
+		if $DetectTile.is_asphalt() == true:
+			if $BumpyNoise.is_playing():
+				$BumpyNoise.stop()
+			terrain_speed_reduction = 1.0
+		else: # not on asphalt.
+			if $BumpyNoise.is_playing() == false:
+				$BumpyNoise.play()
+
+		if $DetectTile.is_grass():
+			terrain_speed_reduction = 0.66
+			$BumpyNoise.set_volume_db(-15)
+		elif $DetectTile.is_dirt():
+			terrain_speed_reduction = 0.50
+			$BumpyNoise.set_volume_db(-9)
+			$BumpyNoise.set_pitch_scale(0.8)
+
+
+
 
 func detect_collisions():
 	var collisions = get_colliding_bodies()
