@@ -32,8 +32,28 @@ func _physics_process(delta):
 
 
 	#car.apply_impulse(position, Vector2.RIGHT.rotated(wheel_angle) * tire_grip * delta)
-	var steering_factor : float = 0.005 # lower turns slower
-	set_angular_velocity(steering.wheel_angle * engine.speed * steering_factor)
+	#var steering_factor : float = 0.005 # lower turns slower
+	var steering_factor : float = .01
+
+	#set_angular_velocity(steering.wheel_angle * engine.speed * steering_factor)
+
+	var spd = engine.speed
+	var ratio = engine.speed / engine.max_speed
+
+	# Nice ease out and back for lerping
+	var eased_spd = sin(ratio*4)/2 + ratio
+	# graph: https://www.desmos.com/calculator/ourez6xxg9
+
+
+	var ang_vel = steering.wheel_angle * lerp(0, 6, eased_spd)
+
+	set_angular_velocity(ang_vel)
+
+#	print(engine.speed)
+#	if engine.speed > 50:
+#		set_angular_velocity(clamp(ang_vel, -6, 6))
+#	else:
+#		set_angular_velocity(lerp(get_angular_velocity(), 0.0, 0.6))
 
 	detect_collisions()
 	detect_lakes()
@@ -90,3 +110,6 @@ func add_pilot(pilot_node):
 func _on_IgnitionTimer_timeout():
 	engine.turn_on()
 	state = states.on
+
+func _integrate_forces(state):
+	state.get_transform()
