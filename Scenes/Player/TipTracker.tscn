@@ -4,42 +4,46 @@
 [ext_resource path="res://Scenes/Player/pizzaAmmoBar.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Player/clockFace.png" type="Texture" id=3]
 
-[node name="TipTracker" type="HBoxContainer"]
-margin_right = 1024.0
-margin_bottom = 14.0
-custom_constants/separation = 25
-alignment = 1
+[node name="VBoxContainer" type="VBoxContainer"]
+anchor_right = 1.0
+margin_bottom = 64.0
 script = ExtResource( 1 )
 
-[node name="CashLabel" type="Label" parent="."]
+[node name="TipTracker" type="HBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 64.0
+custom_constants/separation = 25
+alignment = 1
+
+[node name="CashLabel" type="Label" parent="TipTracker"]
 margin_left = 310.0
 margin_top = 25.0
 margin_right = 344.0
 margin_bottom = 39.0
 text = "Cash:"
 
-[node name="CashOnHand" type="Label" parent="."]
+[node name="CashOnHand" type="Label" parent="TipTracker"]
 margin_left = 369.0
 margin_top = 25.0
 margin_right = 405.0
 margin_bottom = 39.0
 text = "$0.00"
 
-[node name="PriceLabel" type="Label" parent="."]
+[node name="PriceLabel" type="Label" parent="TipTracker"]
 margin_left = 430.0
 margin_top = 25.0
 margin_right = 466.0
 margin_bottom = 39.0
 text = "Price:"
 
-[node name="Cost" type="Label" parent="."]
+[node name="Cost" type="Label" parent="TipTracker"]
 margin_left = 491.0
 margin_top = 25.0
 margin_right = 535.0
 margin_bottom = 39.0
 text = "$79.95"
 
-[node name="PizzaAmmo" type="TextureProgress" parent="."]
+[node name="PizzaAmmo" type="TextureProgress" parent="TipTracker"]
 margin_left = 560.0
 margin_right = 624.0
 margin_bottom = 64.0
@@ -48,10 +52,17 @@ value = 13.0
 texture_progress = ExtResource( 2 )
 fill_mode = 3
 
-[node name="StopWatch" type="TextureRect" parent="."]
+[node name="StopWatch" type="TextureRect" parent="TipTracker"]
 show_behind_parent = true
 margin_left = 649.0
 margin_right = 713.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 64, 64 )
 texture = ExtResource( 3 )
+
+[node name="InstructionsLabel" type="Label" parent="."]
+margin_top = 68.0
+margin_right = 1024.0
+margin_bottom = 82.0
+text = "Return to Pizzeria for more Pizzas"
+align = 1
