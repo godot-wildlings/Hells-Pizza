@@ -28,9 +28,9 @@ func _process(delta):
 
 	pizza_ammo.set_value(Game.player.pizza_ammo)
 	if Game.player.pizza_ammo == 0:
-		instructions_label.show()
+		instructions_label.set_text("Return to the pizzeria to pick up more pizzas. Follow the green arrow.")
 	else:
-		instructions_label.hide()
+		instructions_label.set_text("Follow the green arrow and click the mouse to deliver a pizza to the right location.")
 
 func _draw():
 	var clock_rect = stop_watch

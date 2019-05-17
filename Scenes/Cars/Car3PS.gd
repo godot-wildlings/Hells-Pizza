@@ -2,7 +2,7 @@ extends RigidBody2D
 
 onready var steering = $Steering
 onready var engine = $Engine
-
+onready var radio = $CanvasLayer/Radio
 var collision_in_progress : bool = false
 var sinking_in_progress : bool = false
 
@@ -45,6 +45,11 @@ func _physics_process(delta):
 	detect_bumps()
 
 func detect_bumps():
+	if state == states.off:
+		if $BumpyNoise.is_playing():
+			$BumpyNoise.stop()
+		return
+
 	if Game.map.name == "Overworld":
 		if $DetectTile.is_asphalt() == true:
 			if $BumpyNoise.is_playing():
@@ -99,14 +104,17 @@ func _on_HitStunTimer_timeout():
 
 func shut_off():
 	engine.shut_off()
+	radio.shut_off()
 	state = states.off
 
 func turn_off():
 	shut_off()
 
+
 func turn_on():
 	$IgnitionTimer.start()
 	$IgnitionNoise.play()
+
 
 func add_driver(driver_node):
 	add_pilot(driver_node)
@@ -123,4 +131,5 @@ func _integrate_forces(state):
 
 func _on_IgnitionNoise_finished():
 	# turn on the radio..
+	$CanvasLayer/Radio.turn_on()
 	$"CanvasLayer/Radio"._on_NextSongButton_pressed()

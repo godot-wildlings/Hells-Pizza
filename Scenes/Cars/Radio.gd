@@ -7,8 +7,7 @@ onready var song_name_label = get_node("VBoxContainer/SongNameLabel")
 
 
 func _ready():
-	play_button.show()
-	pause_button.hide()
+	turn_on()
 
 	music_mixer.connect("song_changed", self, "_on_song_changed")
 
@@ -51,3 +50,14 @@ func _on_PrevSongButton_pressed():
 
 func _on_song_changed(song_name):
 	update_song_label(song_name)
+
+
+func shut_off():
+	music_mixer.pause()
+	hide()
+
+func turn_on():
+	show()
+	play_button.show()
+	pause_button.hide()
+

@@ -36,3 +36,7 @@ func deliver_pizza(area):
 func _on_Pizza_area_entered(area):
 	if area == Game.player.current_destination:
 		deliver_pizza(area)
+		die()
+	elif area.has_method("reject_pizza"):
+		area.reject_pizza()
+		die()

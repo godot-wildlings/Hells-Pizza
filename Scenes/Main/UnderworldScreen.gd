@@ -16,8 +16,7 @@ func next_page():
 	var next_tab = tabs.get_current_tab()+1
 	if next_tab < tabs.get_tab_count():
 		tabs.set_current_tab(next_tab)
-	else:
-		emit_signal("completed")
+
 
 #warning-ignore:unused_argument
 func _input(event):
@@ -26,3 +25,14 @@ func _input(event):
 
 func _on_NextPageButton_pressed():
 	next_page()
+
+
+func _on_ToUnderworldButton_pressed():
+	emit_signal("completed")
+
+
+func _on_ToOverworldButton_pressed():
+	hide()
+	tabs.set_current_tab(0)
+
+	Game.main.return_to_overworld()

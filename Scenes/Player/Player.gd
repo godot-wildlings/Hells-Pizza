@@ -109,12 +109,16 @@ func pickup_pizzas():
 		tip_tracker.reset_clock()
 	$HurryNoise.play()
 
-func _on_DestinationDetector_area_entered(area):
-	if area == Game.devil:
-		if state == states.driving:
-			car.turn_off()
+func meet_the_devil():
+	if state == states.driving:
+		car.turn_off()
 
 		emit_signal("met_the_devil", cash)
+
+
+func _on_DestinationDetector_area_entered(area):
+	if area == Game.devil:
+		meet_the_devil()
 
 	elif area == current_destination:
 		if area == Game.map.pizza_factory:

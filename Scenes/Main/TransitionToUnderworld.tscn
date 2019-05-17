@@ -42,7 +42,7 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="Label" type="Label" parent="TabContainer/Page1/VBoxContainer"]
-margin_right = 936.0
+margin_right = 928.0
 margin_bottom = 31.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -51,8 +51,8 @@ What do you say?"
 
 [node name="TextureRect" type="TextureRect" parent="TabContainer/Page1/VBoxContainer"]
 margin_top = 35.0
-margin_right = 936.0
-margin_bottom = 466.0
+margin_right = 928.0
+margin_bottom = 476.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 2 )
@@ -60,20 +60,21 @@ expand = true
 stretch_mode = 6
 
 [node name="Label2" type="Label" parent="TabContainer/Page1/VBoxContainer"]
-margin_top = 470.0
-margin_right = 936.0
-margin_bottom = 484.0
+visible = false
+margin_top = 462.0
+margin_right = 928.0
+margin_bottom = 476.0
 text = "\"I say, Hell no! Screw you, Satan!\""
 align = 1
 
 [node name="NextPageButton" type="Button" parent="TabContainer/Page1/VBoxContainer"]
-margin_left = 430.0
-margin_top = 488.0
-margin_right = 506.0
-margin_bottom = 508.0
+margin_left = 356.0
+margin_top = 480.0
+margin_right = 572.0
+margin_bottom = 500.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "Next Page"
+text = "I say, Hell No! Screw you, Satan!"
 
 [node name="Page2" type="MarginContainer" parent="TabContainer"]
 visible = false
@@ -100,7 +101,7 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="Label" type="Label" parent="TabContainer/Page2/VBoxContainer"]
-margin_right = 936.0
+margin_right = 928.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -109,8 +110,8 @@ align = 1
 
 [node name="TextureRect" type="TextureRect" parent="TabContainer/Page2/VBoxContainer"]
 margin_top = 18.0
-margin_right = 936.0
-margin_bottom = 466.0
+margin_right = 928.0
+margin_bottom = 476.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 3 )
@@ -118,19 +119,33 @@ expand = true
 stretch_mode = 6
 
 [node name="Label2" type="Label" parent="TabContainer/Page2/VBoxContainer"]
-margin_top = 470.0
-margin_right = 936.0
-margin_bottom = 484.0
+visible = false
+margin_top = 462.0
+margin_right = 928.0
+margin_bottom = 476.0
 text = "Hmm. That does look like a sweet ride. \"Hell yes!\""
 align = 1
 
-[node name="NextPageButton" type="Button" parent="TabContainer/Page2/VBoxContainer"]
-margin_left = 430.0
-margin_top = 488.0
-margin_right = 506.0
-margin_bottom = 508.0
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Page2/VBoxContainer"]
+margin_top = 480.0
+margin_right = 928.0
+margin_bottom = 500.0
+custom_constants/separation = 25
+alignment = 1
+
+[node name="ToUnderworldButton" type="Button" parent="TabContainer/Page2/VBoxContainer/HBoxContainer"]
+margin_left = 103.0
+margin_right = 429.0
+margin_bottom = 20.0
 size_flags_horizontal = 4
 size_flags_vertical = 12
-text = "Next Page"
+text = "That does seem like a sweet ride. Sure. Why not?"
+
+[node name="ToOverworldButton" type="Button" parent="TabContainer/Page2/VBoxContainer/HBoxContainer"]
+margin_left = 454.0
+margin_right = 825.0
+margin_bottom = 20.0
+text = "No Thanks. I like My Mom's Car. I'd rather not go to hell."
 [connection signal="pressed" from="TabContainer/Page1/VBoxContainer/NextPageButton" to="." method="_on_NextPageButton_pressed"]
-[connection signal="pressed" from="TabContainer/Page2/VBoxContainer/NextPageButton" to="." method="_on_NextPageButton_pressed"]
+[connection signal="pressed" from="TabContainer/Page2/VBoxContainer/HBoxContainer/ToUnderworldButton" to="." method="_on_ToUnderworldButton_pressed"]
+[connection signal="pressed" from="TabContainer/Page2/VBoxContainer/HBoxContainer/ToOverworldButton" to="." method="_on_ToOverworldButton_pressed"]

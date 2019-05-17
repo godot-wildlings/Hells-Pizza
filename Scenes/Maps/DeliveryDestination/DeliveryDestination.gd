@@ -5,6 +5,8 @@ enum Types { TYPE_DEMON, TYPE_BUILDING }
 onready var type : int = Types.TYPE_BUILDING
 onready var building_container : Node2D = $Building
 onready var demon_container : Node2D = $Demon
+var is_current_destination : bool = false
+
 
 func _ready():
 	hide()
@@ -83,8 +85,31 @@ func _get_random_dict_key(dict : Dictionary) -> String:
 func _on_DestructionTimer_timeout():
 	call_deferred("queue_free")
 
+func request_pizza():
+	for building in building_container.get_children():
+		if building.has_node("DestinationAura"):
+			building.get_node("DestinationAura").show()
+	for demon in demon_container.get_children():
+		if demon.has_node("DestinationAura"):
+			demon.get_node("DestinationAura").show()
+
+func reject_pizza():
+	var rejection_idx = randi()%$rejections.get_child_count()
+	var rejection = $rejections.get_children()[rejection_idx]
+	rejection.set_pitch_scale(rand_range(0.66, 1.33))
+	rejection.play()
+
 func receive_pizza():
-	set_modulate(Color.white)
+	for building in building_container.get_children():
+		if building.has_node("DestinationAura"):
+			building.get_node("DestinationAura").hide()
+	for demon in demon_container.get_children():
+		if demon.has_node("DestinationAura"):
+			demon.get_node("DestinationAura").hide()
+
+	$ThanksNoise.set_pitch_scale(rand_range(0.75, 1.33))
+	$ThanksNoise.play()
+
 	#$CollisionShape2D.call_deferred("set_disabled", true)
 
 func _on_RevealTimer_timeout():

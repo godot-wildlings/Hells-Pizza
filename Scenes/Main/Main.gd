@@ -78,6 +78,10 @@ func _on_UnderworldTransitionScreen_completed():
 	call_deferred("move_to_underworld")
 
 func move_to_underworld():
+	$IntroToUnderworld.play()
+
+	current_level = load_level("Underworld")
+
 	var car_node = spawn_car("Lucifer")
 	var new_player = spawn_player()
 	Game.player = new_player
@@ -85,18 +89,13 @@ func move_to_underworld():
 	new_player.cash = cash_on_hand
 
 
-
+func return_to_overworld():
+	$CanvasLayer/TransitionToUnderworld.hide()
+	Game.player.car.radio.turn_on()
 
 func _on_Player_met_the_devil(cash):
 	$CanvasLayer/TransitionToUnderworld.show()
 
-	$TransitionDelayTimer.start()
-
 	cash_on_hand = cash
 
-func setup_underworld():
-	current_level = load_level("Underworld")
 
-
-func _on_TransitionDelayTimer_timeout():
-	call_deferred("setup_underworld")
