@@ -19,6 +19,7 @@ shape = SubResource( 1 )
 [node name="DetectTile" parent="." instance=ExtResource( 2 )]
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_left = -27.5419
 margin_top = 71.2497
 margin_right = 23.4581
@@ -31,6 +32,5 @@ wait_time = 0.5
 one_shot = true
 
 [node name="DestructionTimer" type="Timer" parent="."]
-
 [connection signal="timeout" from="ScanTimer" to="." method="_on_ScanTimer_timeout"]
 [connection signal="timeout" from="DestructionTimer" to="." method="_on_DestructionTimer_timeout"]

@@ -75,7 +75,7 @@ func _get_random_dict_key(dict : Dictionary) -> String:
 	var dict_keys : Array = dict.keys()
 	var random_key : String = dict_keys[random_key_idx]
 	assert dict.has(random_key)
-	
+
 	return random_key
 
 func _on_DestructionTimer_timeout():
