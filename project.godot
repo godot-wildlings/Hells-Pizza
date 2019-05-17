@@ -36,7 +36,7 @@ Game="*res://Scenes/Main/Game.gd"
 
 [display]
 
-window/stretch/mode="viewport"
+window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
 [importer_defaults]

@@ -32,5 +32,10 @@ wait_time = 0.5
 one_shot = true
 
 [node name="DestructionTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="RevealTimer" type="Timer" parent="."]
+wait_time = 0.5
 [connection signal="timeout" from="ScanTimer" to="." method="_on_ScanTimer_timeout"]
 [connection signal="timeout" from="DestructionTimer" to="." method="_on_DestructionTimer_timeout"]
+[connection signal="timeout" from="RevealTimer" to="." method="_on_RevealTimer_timeout"]

@@ -30,16 +30,16 @@ func spawn_car(car_name: String) -> Node2D:
 	var car_node
 
 	if car_name == "Mom":
-		car_scene = load("res://Scenes/Cars/CarMom.tscn")
+		car_scene = preload("res://Scenes/Cars/CarMom.tscn")
 	elif car_name == "Lucifer":
-		car_scene = load("res://Scenes/Cars/CarLucifer.tscn")
+		car_scene = preload("res://Scenes/Cars/CarLucifer.tscn")
 
 	car_node = car_scene.instance()
 	current_level.add_car(car_node)
 	return car_node
 
 func spawn_player():
-	var player_scene = load("res://Scenes/Player/Player.tscn")
+	var player_scene = preload("res://Scenes/Player/Player.tscn")
 	var new_player = player_scene.instance()
 	Game.player = new_player
 
@@ -49,21 +49,21 @@ func spawn_player():
 
 
 func load_level(level_name : String ) -> Node2D:
-	var levels : Dictionary = {
-			"Overworld" : "res://Scenes/Maps/Overworld/Overworld.tscn",
-			"Underworld" : "res://Scenes/Maps/Underworld/Underworld.tscn",
-		}
+	var overworld_scene = preload("res://Scenes/Maps/Overworld/Overworld.tscn")
+	var underworld_scene = preload("res://Scenes/Maps/Underworld/Underworld.tscn")
 
 	remove_old_level()
-	var level_scene_path = levels[level_name]
-	if level_scene_path != "":
-		var level_scene = load(levels[level_name])
-		var new_level = level_scene.instance()
-		level_container.call_deferred("add_child", new_level)
-		Game.map = new_level
-		return new_level
-	else:
-		return null
+	var new_level
+	if level_name == "Overworld":
+		new_level = overworld_scene.instance()
+	elif level_name == "Underworld":
+		new_level = underworld_scene.instance()
+	#var level_scene = load(levels[level_name])
+	#var new_level = level_scene.instance()
+	level_container.call_deferred("add_child", new_level)
+	Game.map = new_level
+	return new_level
+
 
 func remove_old_level():
 	if current_level != null and is_instance_valid(current_level):

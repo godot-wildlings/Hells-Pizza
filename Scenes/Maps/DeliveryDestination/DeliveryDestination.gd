@@ -7,6 +7,7 @@ onready var building_container : Node2D = $Building
 onready var demon_container : Node2D = $Demon
 
 func _ready():
+	hide()
 	$ScanTimer.start()
 	if Game.map.name == "Underworld":
 		type = Types.TYPE_DEMON
@@ -39,6 +40,7 @@ func _on_ScanTimer_timeout():
 		die_on_unstable_terrain()
 		die_if_overlapping()
 		#print(self.name, " Game.map.terrain == ", Game.map.terrain.name)
+		$RevealTimer.start()
 	else:
 		push_warning(self.name + " Game.map.terrain not ready yet. Trying again in " + str($ScanTimer.get_wait_time()) + "s")
 		$ScanTimer.start()
@@ -84,3 +86,6 @@ func _on_DestructionTimer_timeout():
 func receive_pizza():
 	set_modulate(Color.white)
 	#$CollisionShape2D.call_deferred("set_disabled", true)
+
+func _on_RevealTimer_timeout():
+	show()
