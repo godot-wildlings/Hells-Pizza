@@ -18,3 +18,8 @@ script = ExtResource( 3 )
 [node name="TransitionToUnderworld" parent="CanvasLayer" instance=ExtResource( 4 )]
 
 [node name="storage" type="Node2D" parent="."]
+
+[node name="TransitionDelayTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+[connection signal="timeout" from="TransitionDelayTimer" to="." method="_on_TransitionDelayTimer_timeout"]

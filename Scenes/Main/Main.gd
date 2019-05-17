@@ -89,8 +89,14 @@ func move_to_underworld():
 
 func _on_Player_met_the_devil(cash):
 	$CanvasLayer/TransitionToUnderworld.show()
-	call_deferred("setup_underworld")
+
+	$TransitionDelayTimer.start()
+
 	cash_on_hand = cash
 
 func setup_underworld():
 	current_level = load_level("Underworld")
+
+
+func _on_TransitionDelayTimer_timeout():
+	call_deferred("setup_underworld")

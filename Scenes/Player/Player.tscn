@@ -44,7 +44,6 @@ stream = ExtResource( 6 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-smoothing_enabled = true
 offset_h = 0.5
 drag_margin_left = 0.0
 drag_margin_top = 0.0
