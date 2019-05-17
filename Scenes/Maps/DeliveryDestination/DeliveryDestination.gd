@@ -10,8 +10,10 @@ func _ready():
 	$ScanTimer.start()
 	if Game.map.name == "Underworld":
 		type = Types.TYPE_DEMON
+		$Label.text = "Demon"
 	elif Game.map.name == "Overworld":
 		type = Types.TYPE_BUILDING
+		$Label.text = "Building"
 	_spawn_entity_based_on_type()
 
 func die_on_unstable_terrain():
