@@ -92,3 +92,4 @@ volume_db = -15.0
 [connection signal="timeout" from="Steering/RecenterWheelTimer" to="Steering" method="_on_RecenterWheelTimer_timeout"]
 [connection signal="timeout" from="HitStunTimer" to="." method="_on_HitStunTimer_timeout"]
 [connection signal="timeout" from="IgnitionTimer" to="." method="_on_IgnitionTimer_timeout"]
+[connection signal="finished" from="IgnitionNoise" to="." method="_on_IgnitionNoise_finished"]

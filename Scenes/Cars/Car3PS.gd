@@ -120,3 +120,7 @@ func _on_IgnitionTimer_timeout():
 
 func _integrate_forces(state):
 	state.get_transform()
+
+func _on_IgnitionNoise_finished():
+	# turn on the radio..
+	$"CanvasLayer/Radio"._on_NextSongButton_pressed()

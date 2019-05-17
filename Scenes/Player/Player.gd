@@ -87,7 +87,7 @@ func throw_pizza(velocity):
 		current_destination = Game.map.pizza_factory
 
 #warning-ignore:unused_argument
-func _input(event):
+func _unhandled_input(event):
 	if (
 			Input.is_action_just_pressed("shoot")
 			and state != states.dead
