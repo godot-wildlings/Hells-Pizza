@@ -23,4 +23,3 @@ script = ExtResource( 3 )
 [node name="Cars" type="Node2D" parent="."]
 
 [node name="Pedestrians" type="Node2D" parent="."]
-

@@ -132,6 +132,5 @@ margin_bottom = 508.0
 size_flags_horizontal = 4
 size_flags_vertical = 12
 text = "Next Page"
-
 [connection signal="pressed" from="TabContainer/Page1/VBoxContainer/NextPageButton" to="." method="_on_NextPageButton_pressed"]
 [connection signal="pressed" from="TabContainer/Page2/VBoxContainer/NextPageButton" to="." method="_on_NextPageButton_pressed"]

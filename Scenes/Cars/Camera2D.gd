@@ -13,9 +13,23 @@ func _ready():
 	DesiredZoom = zoom
 
 
+
 func _process(delta):
 	Ticks += 1
 	zoom = lerp(zoom, DesiredZoom, 0.2 * delta * 60)
+
+	if is_instance_valid(Game.player):
+		if Game.player.state == Game.player.states.driving:
+#			set_v_offset(1)
+#			set_h_offset(0)
+			var speed = Game.player.car.engine.speed
+			var max_speed = Game.player.car.engine.max_speed
+			position = Vector2(0.35 * speed, 0)
+
+			var zoom_factor = lerp(1.0, 2.5, speed / max_speed)
+			DesiredZoom = Vector2(zoom_factor, zoom_factor)
+
+
 
 func _draw():
 	pass
