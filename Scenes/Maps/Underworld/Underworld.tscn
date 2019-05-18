@@ -17,8 +17,8 @@ map_name = "Underworld"
 
 [node name="DeliveryDestinations" parent="." instance=ExtResource( 4 )]
 
-[node name="PizzaFactory" parent="." instance=ExtResource( 5 )]
-
 [node name="Cars" type="Node2D" parent="."]
 
 [node name="Pedestrians" type="Node2D" parent="."]
+
+[node name="PizzaFactory" parent="." instance=ExtResource( 5 )]
