@@ -20,9 +20,9 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="DetectTile" parent="." instance=ExtResource( 2 )]
+visible = false
 
 [node name="Label" type="Label" parent="."]
-visible = false
 margin_left = -27.5419
 margin_top = 71.2497
 margin_right = 23.4581

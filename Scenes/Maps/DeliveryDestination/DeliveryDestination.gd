@@ -7,6 +7,7 @@ onready var building_container : Node2D = $Building
 onready var demon_container : Node2D = $Demon
 var is_current_destination : bool = false
 
+var ticks : int = 0
 
 func _ready():
 	hide()
@@ -71,7 +72,7 @@ func _spawn_random_demon() -> void:
 		demon_container.remove_child(children)
 	var random_demon : Demon = random_scene.instance()
 	demon_container.add_child(random_demon)
-
+	random_demon.base_container = self
 
 func _get_random_dict_key(dict : Dictionary) -> String:
 	assert dict.size() > 0
@@ -82,8 +83,11 @@ func _get_random_dict_key(dict : Dictionary) -> String:
 
 	return random_key
 
-func _on_DestructionTimer_timeout():
+func die():
 	call_deferred("queue_free")
+
+func _on_DestructionTimer_timeout():
+	die()
 
 func request_pizza():
 	for building in building_container.get_children():
@@ -110,7 +114,21 @@ func receive_pizza():
 	$ThanksNoise.set_pitch_scale(rand_range(0.75, 1.33))
 	$ThanksNoise.play()
 
+	if Game.map.name == "Overworld":
+		Game.player.cash += rand_range(0.05, 0.50)
+	elif Game.map.name == "Underworld":
+		Game.player.cash += rand_range(1.00, 5.00)
+
 	#$CollisionShape2D.call_deferred("set_disabled", true)
+
+func get_coordinates() -> Vector2:
+	if Game.map.name == "Underworld":
+		# imps can move when the player hits them
+		# compass needs to know where the imp is.
+		return $Demon.get_child(0).get_global_position()
+	else:
+		return get_global_position()
+
 
 func _on_RevealTimer_timeout():
 	show()

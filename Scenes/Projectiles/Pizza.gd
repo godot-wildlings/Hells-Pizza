@@ -1,6 +1,8 @@
 extends Area2D
 
 var velocity : Vector2 = Vector2.ZERO
+enum states { ready, delivered }
+var state = states.ready
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,15 +30,17 @@ func deliver_pizza(area):
 	if area.has_method("receive_pizza"):
 		# get your tip, set the compass back to the pizza factory
 		print("You delivered a pizza!")
-		Game.player.cash += rand_range(0.05, 0.50)
-		Game.player.current_destination = Game.map.pizza_factory
+		#Game.player.current_destination = Game.map.pizza_factory
+		Game.player.get_new_destination()
 		area.receive_pizza()
+		state = states.delivered
 
 
 func _on_Pizza_area_entered(area):
-	if area == Game.player.current_destination:
-		deliver_pizza(area)
-		die()
-	elif area.has_method("reject_pizza"):
-		area.reject_pizza()
-		die()
+	if state == states.ready:
+		if area == Game.player.current_destination:
+			deliver_pizza(area)
+			die()
+		elif area.has_method("reject_pizza"):
+			area.reject_pizza()
+			die()

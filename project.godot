@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Maps/DeliveryDestination/Buildings/Building.gd"
 }, {
-"base": "RigidBody2D",
+"base": "Area2D",
 "class": "Demon",
 "language": "GDScript",
 "path": "res://Scenes/Maps/DeliveryDestination/Demons/Demon.gd"

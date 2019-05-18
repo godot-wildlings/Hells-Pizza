@@ -60,6 +60,12 @@ func deliver_pizza(area):
 		current_destination = Game.map.pizza_factory
 		area.receive_pizza()
 
+func get_new_destination():
+	if pizza_ammo > 0:
+		current_destination = Game.map.pizza_factory.get_random_destination()
+	else:
+		current_destination = Game.map.pizza_factory
+
 func drop_pizza():
 	if pizza_ammo > 0:
 		var vel = Vector2.ZERO

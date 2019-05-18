@@ -20,7 +20,10 @@ func _process(delta):
 			if Game.player.current_destination != null:
 				var destination = Game.player.current_destination
 				if is_instance_valid(destination):
-					look_at(Game.player.current_destination.get_global_position())
+					if Game.player.current_destination.has_method("get_coordinates"):
+						look_at(Game.player.current_destination.get_coordinates())
+					else:
+						look_at(Game.player.current_destination.get_global_position())
 				else:
 					push_warning("Compass can't find delivery destination. Was it queued_free?")
 					Game.player.current_destination = Game.map.pizza_factory
