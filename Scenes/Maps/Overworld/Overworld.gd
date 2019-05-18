@@ -7,10 +7,11 @@ onready var pizza_factory = $PizzaFactory
 
 
 func _init():
-	Game.map = self
-
+	#Game.map = self
+	pass
 
 func _ready():
+	Game.map = self
 	spawn_portal_to_underworld()
 
 func spawn_portal_to_underworld():

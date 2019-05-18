@@ -10,7 +10,6 @@ size = 96
 font_data = ExtResource( 4 )
 
 [node name="TransitionToUnderworld" type="PopupPanel"]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -25,7 +24,6 @@ margin_bottom = -4.0
 tabs_visible = false
 
 [node name="Page1" type="MarginContainer" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -90,6 +88,7 @@ enabled_focus_mode = 0
 text = "I say \"Hell No!\" Screw You, Satan"
 
 [node name="Page2" type="MarginContainer" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0

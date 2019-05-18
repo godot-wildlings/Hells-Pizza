@@ -14,6 +14,9 @@ var speed : float = 200.0
 var time_elapsed : float = 0.0
 var current_target : Node2D # probably the player
 
+enum states { hungry, fed }
+var state = states.hungry
+
 
 func _ready():
 	hide()
@@ -144,6 +147,9 @@ func reject_pizza():
 	rejection.play()
 
 func receive_pizza():
+	if state == states.fed:
+		return
+
 	for building in building_container.get_children():
 		if building.has_node("DestinationAura"):
 			building.get_node("DestinationAura").hide()
@@ -158,6 +164,8 @@ func receive_pizza():
 	if Game.map.name == "Underworld":
 		tip *= 5.0
 	Game.player.receive_tip(tip)
+	$HitStunTimer.start()
+	state = states.fed
 
 	#$CollisionShape2D.call_deferred("set_disabled", true)
 
@@ -172,3 +180,7 @@ func get_coordinates() -> Vector2:
 
 func _on_RevealTimer_timeout():
 	show()
+
+
+func _on_HitStunTimer_timeout():
+	state = states.hungry

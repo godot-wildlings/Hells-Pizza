@@ -8,7 +8,7 @@
 extents = Vector2( 142.378, 57.4443 )
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 306.483
+radius = 258.145
 
 [node name="PizzaFactory" type="Area2D"]
 position = Vector2( -73.5011, -55.0158 )

@@ -57,7 +57,12 @@ stream = ExtResource( 5 )
 
 [node name="MoveTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="HitStunTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
 [connection signal="timeout" from="ScanTimer" to="." method="_on_ScanTimer_timeout"]
 [connection signal="timeout" from="DestructionTimer" to="." method="_on_DestructionTimer_timeout"]
 [connection signal="timeout" from="RevealTimer" to="." method="_on_RevealTimer_timeout"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_MoveTimer_timeout"]
+[connection signal="timeout" from="HitStunTimer" to="." method="_on_HitStunTimer_timeout"]

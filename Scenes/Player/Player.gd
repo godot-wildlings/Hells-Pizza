@@ -162,9 +162,8 @@ func _on_DestinationDetector_area_entered(area):
 	elif area.name == "Exit":
 		exit_hell(area)
 
-	elif area == current_destination:
-		if area == Game.map.pizza_factory:
-			pickup_pizzas()
+	elif area == Game.map.pizza_factory:
+		pickup_pizzas()
 
 
 

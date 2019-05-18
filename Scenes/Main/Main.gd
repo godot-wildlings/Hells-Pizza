@@ -79,6 +79,7 @@ func _on_IntroScreen_completed():
 func _on_CutScene_completed(cutscene):
 	cutscene.hide()
 	if cutscene.name == "PickupMom":
+		get_tree().set_pause(false)
 		print("Aggroing Demons now")
 		current_level.spawn_exit()
 		current_level.aggro_demons()
@@ -116,10 +117,12 @@ func _on_Player_met_the_devil(cash):
 
 func _on_Player_met_mom_in_hell():
 	# act 3, redemption
+	get_tree().set_pause(true)
 	$CanvasLayer/PickupMom.show()
 
 func _on_Player_found_exit_from_hell():
 	# roll credits
+	get_tree().set_pause(true)
 	$CanvasLayer/ReturnHome.show()
 
 #warning-ignore:unused_argument

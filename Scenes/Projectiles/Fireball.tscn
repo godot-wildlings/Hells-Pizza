@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Projectiles/Fireball.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player/pizza.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Projectiles/sizzle.wav" type="AudioStream" id=3]
+[ext_resource path="res://Scenes/Projectiles/fwoosh2.wav" type="AudioStream" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 29.3721
@@ -20,5 +22,12 @@ shape = SubResource( 1 )
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="ImpactNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[node name="LaunchNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
 [connection signal="body_entered" from="." to="." method="_on_Fireball_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="finished" from="ImpactNoise" to="." method="_on_ImpactNoise_finished"]
