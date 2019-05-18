@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/UI/CutScene.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Art/Sprites/game_release.png" type="Texture" id=2]
+[ext_resource path="res://Art/Sprites/devil.png" type="Texture" id=3]
+[ext_resource path="res://Art/Sprites/lazy_gamer.png" type="Texture" id=4]
+
+[node name="ReturnHome" instance=ExtResource( 1 )]
+visible = true
+
+[node name="Label" parent="TabContainer/Page1/VBoxContainer" index="0"]
+text = "Having narrowly escaped hell, you can now rest."
+
+[node name="Label2" parent="TabContainer/Page1/VBoxContainer" index="1"]
+text = "Thanks for playing."
+
+[node name="TextureRect" parent="TabContainer/Page1/VBoxContainer" index="2"]
+texture = ExtResource( 2 )
+
+[node name="Label2" parent="TabContainer/Page2/VBoxContainer" index="1"]
+text = "Plexsoup, Caevv, DoggieBalloon"
+
+[node name="TextureRect2" parent="TabContainer/Page2/VBoxContainer" index="2"]
+texture = ExtResource( 3 )
+
+[node name="Label" parent="TabContainer/Page3/VBoxContainer" index="0"]
+text = "Enjoy your games!"
+
+[node name="TextureRect3" parent="TabContainer/Page3/VBoxContainer" index="1"]
+texture = ExtResource( 4 )

@@ -27,11 +27,8 @@ func _on_Timer_timeout():
 
 
 func deliver_pizza(area):
+
 	if area.has_method("receive_pizza"):
-		# get your tip, set the compass back to the pizza factory
-		print("You delivered a pizza!")
-		#Game.player.current_destination = Game.map.pizza_factory
-		Game.player.get_new_destination()
 		area.receive_pizza()
 		state = states.delivered
 

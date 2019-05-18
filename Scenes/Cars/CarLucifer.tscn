@@ -5,5 +5,9 @@
 
 [node name="CarLucifer" instance=ExtResource( 1 )]
 
+[node name="Engine" parent="." index="1"]
+acceleration = 350.0
+top_speed = 250.0
+
 [node name="Sprite" parent="." index="11"]
 texture = ExtResource( 2 )

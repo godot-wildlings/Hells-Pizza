@@ -10,6 +10,7 @@ var base_container : Area2D
 func explode():
 	$Death/DeathTimer.start()
 	$AnimationPlayer.play("explode")
+	state = states.dead
 
 
 func _on_Demon_body_entered(body):

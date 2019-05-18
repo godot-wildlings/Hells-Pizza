@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/UI/CutScene.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Art/Sprites/Mom.png" type="Texture" id=2]
+[ext_resource path="res://Art/Sprites/contract.png" type="Texture" id=3]
+[ext_resource path="res://Art/Sprites/luficers_car.png" type="Texture" id=4]
+
+[node name="PickupMom" instance=ExtResource( 1 )]
+visible = true
+
+[node name="Label" parent="TabContainer/Page1/VBoxContainer" index="0"]
+margin_bottom = 31.0
+text = "Mom, what are you doing here?
+Hell's not exactly safe."
+
+[node name="TextureRect" parent="TabContainer/Page1/VBoxContainer" index="1"]
+margin_top = 56.0
+margin_bottom = 416.0
+texture = ExtResource( 2 )
+
+[node name="Label2" parent="TabContainer/Page1/VBoxContainer" index="2"]
+margin_top = 441.0
+margin_bottom = 455.0
+text = "Oh Robert. I'm glad you got up off the couch, but you should learn to read contracts better."
+
+[node name="NextPageButton" parent="TabContainer/Page1/VBoxContainer" index="3"]
+margin_left = 421.0
+margin_right = 506.0
+text = "Wait, what?"
+
+[node name="Label" parent="TabContainer/Page2/VBoxContainer" index="0"]
+text = "Oh hell no!"
+
+[node name="Label2" parent="TabContainer/Page2/VBoxContainer" index="1"]
+text = "Not on my watch!"
+
+[node name="TextureRect2" parent="TabContainer/Page2/VBoxContainer" index="2"]
+texture = ExtResource( 3 )
+
+[node name="NextPageButton" parent="TabContainer/Page2/VBoxContainer" index="3"]
+margin_left = 364.0
+margin_right = 564.0
+text = "Jump in. Let's get out of here!"
+
+[node name="Label" parent="TabContainer/Page3/VBoxContainer" index="0"]
+text = "Go Go Go!"
+
+[node name="TextureRect3" parent="TabContainer/Page3/VBoxContainer" index="1"]
+texture = ExtResource( 4 )
+
+[node name="NextPageButton" parent="TabContainer/Page3/VBoxContainer" index="3"]
+margin_left = 427.0
+margin_right = 501.0
+text = "Let's Roll!"

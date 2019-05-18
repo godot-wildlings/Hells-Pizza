@@ -22,3 +22,9 @@ map_name = "Underworld"
 [node name="Pedestrians" type="Node2D" parent="."]
 
 [node name="PizzaFactory" parent="." instance=ExtResource( 5 )]
+
+[node name="MomSpawnTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+autostart = true
+[connection signal="timeout" from="MomSpawnTimer" to="." method="_on_MomSpawnTimer_timeout"]

@@ -35,7 +35,7 @@ func get_tile_idx(location):
 
 func is_asphalt() -> bool:
 	var terrain = Game.map.terrain
-	var tiles = terrain.tiles
+	#var tiles = terrain.tiles
 	if terrain.compare_tile(get_global_position(), "asphalt") == true:
 		return true
 	else:
@@ -50,7 +50,7 @@ func is_grass() -> bool:
 
 func is_dirt() -> bool:
 	var terrain = Game.map.terrain
-	var tiles = terrain.tiles
+	#var tiles = terrain.tiles
 
 	if terrain.compare_tile(get_global_position(), "dirt") == true:
 		return true

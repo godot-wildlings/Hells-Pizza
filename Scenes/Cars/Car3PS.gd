@@ -30,7 +30,7 @@ func _physics_process(delta):
 	var spd = engine.speed * terrain_speed_reduction
 
 	set_linear_velocity(Vector2.RIGHT.rotated(rotation) * spd)
-	var steering_factor : float = .01
+	#var steering_factor : float = .01
 	var ratio = spd / engine.max_speed
 
 	# Nice ease out and back for lerping

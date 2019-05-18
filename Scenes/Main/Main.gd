@@ -14,6 +14,9 @@ var current_level
 var cash_on_hand # hax < can't figure out a better way to transfer cash between player instances
 
 func _ready() -> void:
+
+	#$CanvasLayer/TransitionToUnderworld.show()
+
 	Game.main = self
 	$CanvasLayer/IntroScreen.show()
 	level_container = $Levels
@@ -73,6 +76,16 @@ func _on_IntroScreen_completed():
 	$CanvasLayer/IntroScreen.hide()
 	call_deferred("start_player")
 
+func _on_CutScene_completed(cutscene):
+	cutscene.hide()
+	if cutscene.name == "PickupMom":
+		current_level.spawn_exit()
+		#push_warning(self.name + " cutscene completed, but no logic implemented yet.")
+	elif cutscene.name == "ReturnHome":
+		get_tree().quit()
+
+
+
 func _on_UnderworldTransitionScreen_completed():
 	$CanvasLayer/TransitionToUnderworld.hide()
 	call_deferred("move_to_underworld")
@@ -94,8 +107,27 @@ func return_to_overworld():
 	Game.player.car.radio.turn_on()
 
 func _on_Player_met_the_devil(cash):
+	# act 2, trial
 	$CanvasLayer/TransitionToUnderworld.show()
 
 	cash_on_hand = cash
 
+func _on_Player_met_mom_in_hell():
+	# act 3, redemption
+	$CanvasLayer/PickupMom.show()
 
+func _on_Player_found_exit_from_hell():
+	# roll credits
+	$CanvasLayer/ReturnHome.show()
+
+#warning-ignore:unused_argument
+func _input(event):
+	if Input.is_action_just_pressed("ui_cancel"):
+		$CanvasLayer/EscPanel.show()
+
+func play_click_noise():
+
+	$ClickNoise.play()
+
+func play_hover_noise():
+	$HoverNoise.play()

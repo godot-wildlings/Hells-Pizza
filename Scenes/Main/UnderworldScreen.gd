@@ -24,15 +24,23 @@ func _input(event):
 		next_page()
 
 func _on_NextPageButton_pressed():
+	Game.main.play_click_noise()
 	next_page()
 
 
+
 func _on_ToUnderworldButton_pressed():
+	Game.main.play_click_noise()
 	emit_signal("completed")
 
-
 func _on_ToOverworldButton_pressed():
+	Game.main.play_click_noise()
 	hide()
-	tabs.set_current_tab(0)
+	tabs.set_current_tab(1)
 
 	Game.main.return_to_overworld()
+
+
+func _on_Button_hover():
+	Game.main.play_hover_noise()
+

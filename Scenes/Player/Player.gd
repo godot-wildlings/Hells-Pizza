@@ -20,7 +20,8 @@ var pizza_ammo : int = 0
 var car : Node2D # probably rigidbody, but we might switch to kinematic
 
 signal met_the_devil(cash_on_hand)
-
+signal met_mom_in_hell()
+signal found_exit_from_hell()
 
 func _init():
 	Game.player = self
@@ -35,6 +36,10 @@ func deferred_ready():
 	current_destination = Game.map.pizza_factory
 	#warning-ignore:return_value_discarded
 	connect("met_the_devil", Game.main, "_on_Player_met_the_devil")
+	#warning-ignore:return_value_discarded
+	connect("met_mom_in_hell", Game.main, "_on_Player_met_mom_in_hell")
+	#warning-ignore:return_value_discarded
+	connect("found_exit_from_hell", Game.main, "_on_Player_found_exit_from_hell")
 
 func get_in_car(car_node):
 	if is_instance_valid(get_parent()):
@@ -47,6 +52,7 @@ func get_in_car(car_node):
 
 	$PizzaCompass.turn_on()
 	$DevilCompass.turn_on()
+	$MomCompass.turn_on()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -95,6 +101,8 @@ func throw_pizza(velocity):
 func receive_tip(value):
 	$TipPopup/Panel/TipAmount.set_text("%6.2f"%value)
 	$TipPopup/AnimationPlayer.play("popup_tip")
+	cash += value
+	get_new_destination()
 
 
 #warning-ignore:unused_argument
@@ -113,6 +121,7 @@ func _unhandled_input(event):
 
 
 
+
 func pickup_pizzas():
 	pizza_ammo = 13
 	current_destination = Game.map.pizza_factory.get_random_destination()
@@ -126,10 +135,31 @@ func meet_the_devil():
 
 		emit_signal("met_the_devil", cash)
 
+func meet_mom_in_hell(mom):
+	if state == states.driving:
+		car.turn_off()
+
+	if mom.has_method("die"):
+		mom.die()
+
+	$MomCompass.target = $MomCompass.targets.EXIT
+	emit_signal("met_mom_in_hell")
+
+#warning-ignore:unused_argument
+func exit_hell(exit):
+	if state == states.driving:
+		car.turn_off()
+	emit_signal("found_exit_from_hell")
 
 func _on_DestinationDetector_area_entered(area):
 	if area == Game.devil:
 		meet_the_devil()
+
+	elif area.name == "Mom":
+		meet_mom_in_hell(area)
+
+	elif area.name == "Exit":
+		exit_hell(area)
 
 	elif area == current_destination:
 		if area == Game.map.pizza_factory:

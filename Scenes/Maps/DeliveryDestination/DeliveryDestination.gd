@@ -5,9 +5,13 @@ enum Types { TYPE_DEMON, TYPE_BUILDING }
 onready var type : int = Types.TYPE_BUILDING
 onready var building_container : Node2D = $Building
 onready var demon_container : Node2D = $Demon
-var is_current_destination : bool = false
+#var is_current_destination : bool = false
 
-var ticks : int = 0
+# movement stuff for demons
+var my_demon : Area2D
+var direction : float = 0.0
+var speed : float = 200.0
+var time_elapsed : float = 0.0
 
 func _ready():
 	hide()
@@ -73,6 +77,7 @@ func _spawn_random_demon() -> void:
 	var random_demon : Demon = random_scene.instance()
 	demon_container.add_child(random_demon)
 	random_demon.base_container = self
+	my_demon = random_demon
 
 func _get_random_dict_key(dict : Dictionary) -> String:
 	assert dict.size() > 0
@@ -88,6 +93,25 @@ func die():
 
 func _on_DestructionTimer_timeout():
 	die()
+
+
+func _physics_process(delta):
+	time_elapsed += delta
+	if type == Types.TYPE_DEMON:
+		if my_demon.state == my_demon.states.alive:
+			move_around_like_a_demon(delta)
+
+func move_around_like_a_demon(delta):
+	if $MoveTimer.is_stopped():
+		$MoveTimer.start()
+
+	var velocity = Vector2.RIGHT.rotated(direction) * speed + Vector2.UP.rotated(direction) * speed * sin(time_elapsed)
+	set_global_position(get_global_position() + velocity * delta)
+
+func _on_MoveTimer_timeout():
+	direction = rand_range(0, 2*PI)
+	$MoveTimer.set_wait_time(rand_range(1, 2.5))
+	$MoveTimer.start()
 
 func request_pizza():
 	for building in building_container.get_children():

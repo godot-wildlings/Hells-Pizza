@@ -33,13 +33,19 @@ texture = ExtResource( 3 )
 modulate = Color( 0.294118, 0, 0, 1 )
 target = 1
 
+[node name="MomCompass" parent="." instance=ExtResource( 4 )]
+modulate = Color( 0.00784314, 0.294118, 0.784314, 1 )
+target = 2
+
 [node name="Projectiles" type="Node2D" parent="."]
 
 [node name="PizzaNoise" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
+volume_db = -9.0
 
 [node name="HurryNoise" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
+volume_db = -9.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

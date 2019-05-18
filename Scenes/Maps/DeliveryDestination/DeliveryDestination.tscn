@@ -54,6 +54,10 @@ stream = ExtResource( 5 )
 
 [node name="NotMineNoise3" type="AudioStreamPlayer2D" parent="rejections"]
 stream = ExtResource( 5 )
+
+[node name="MoveTimer" type="Timer" parent="."]
+one_shot = true
 [connection signal="timeout" from="ScanTimer" to="." method="_on_ScanTimer_timeout"]
 [connection signal="timeout" from="DestructionTimer" to="." method="_on_DestructionTimer_timeout"]
 [connection signal="timeout" from="RevealTimer" to="." method="_on_RevealTimer_timeout"]
+[connection signal="timeout" from="MoveTimer" to="." method="_on_MoveTimer_timeout"]
