@@ -1,5 +1,5 @@
 extends Node2D
-export var num_destinations : int = 100
+export var num_destinations : int = 150
 export var max_distance : float = 15000
 
 func _ready():

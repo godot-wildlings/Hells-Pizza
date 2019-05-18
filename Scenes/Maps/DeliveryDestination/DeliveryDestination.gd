@@ -141,10 +141,13 @@ func request_pizza():
 			demon.get_node("DestinationAura").show()
 
 func reject_pizza():
-	var rejection_idx = randi()%$rejections.get_child_count()
-	var rejection = $rejections.get_children()[rejection_idx]
-	rejection.set_pitch_scale(rand_range(0.66, 1.33))
-	rejection.play()
+	if state != states.fed:
+		var rejection_idx = randi()%$rejections.get_child_count()
+		var rejection = $rejections.get_children()[rejection_idx]
+		rejection.set_pitch_scale(rand_range(0.66, 1.33))
+		rejection.play()
+		state = states.fed
+		$HitStunTimer.start()
 
 func receive_pizza():
 	if state == states.fed:
