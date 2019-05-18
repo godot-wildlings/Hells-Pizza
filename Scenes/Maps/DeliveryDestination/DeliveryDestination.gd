@@ -114,10 +114,10 @@ func receive_pizza():
 	$ThanksNoise.set_pitch_scale(rand_range(0.75, 1.33))
 	$ThanksNoise.play()
 
-	if Game.map.name == "Overworld":
-		Game.player.cash += rand_range(0.05, 0.50)
-	elif Game.map.name == "Underworld":
-		Game.player.cash += rand_range(1.00, 5.00)
+	var tip = rand_range(0.05, 0.50)
+	if Game.map.name == "Underworld":
+		tip *= 5.0
+	Game.player.receive_tip(tip)
 
 	#$CollisionShape2D.call_deferred("set_disabled", true)
 

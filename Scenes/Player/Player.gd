@@ -92,6 +92,11 @@ func throw_pizza(velocity):
 	if pizza_ammo <= 0:
 		current_destination = Game.map.pizza_factory
 
+func receive_tip(value):
+	$TipPopup/Panel/TipAmount.set_text("%6.2f"%value)
+	$TipPopup/AnimationPlayer.play("popup_tip")
+
+
 #warning-ignore:unused_argument
 func _unhandled_input(event):
 	if (
