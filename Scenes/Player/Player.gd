@@ -20,6 +20,7 @@ var pizza_ammo : int = 0
 var car : Node2D # probably rigidbody, but we might switch to kinematic
 
 
+
 signal met_the_devil(cash_on_hand)
 signal met_mom_in_hell()
 signal found_exit_from_hell()
@@ -68,10 +69,21 @@ func deliver_pizza(area):
 		area.receive_pizza()
 
 func get_new_destination():
+#	print("old destination == ", current_destination)
+
 	if pizza_ammo > 0:
-		current_destination = Game.map.pizza_factory.get_random_destination()
+		var i : int = 0
+		var new_destination = current_destination
+
+		# prevent going to the same place twice
+		while new_destination == current_destination and i < 25:
+			new_destination = Game.map.pizza_factory.get_random_destination()
+			i += 1
+		current_destination = new_destination
 	else:
 		current_destination = Game.map.pizza_factory
+#	print("new destination == ", current_destination)
+#	print("===========================================")
 
 func drop_pizza():
 	if pizza_ammo > 0:
@@ -100,9 +112,10 @@ func throw_pizza(velocity):
 		current_destination = Game.map.pizza_factory
 
 func receive_tip(value):
-	$TipPopup/Panel/TipAmount.set_text("%6.2f"%value)
-	$TipPopup/AnimationPlayer.play("popup_tip")
-	cash += value
+	if value > 0:
+		$TipPopup/Panel/TipAmount.set_text("%6.2f"%value)
+		$TipPopup/AnimationPlayer.play("popup_tip")
+		cash += value
 	get_new_destination()
 
 
@@ -120,15 +133,21 @@ func _unhandled_input(event):
 			throw_pizza(vel)
 
 
+	if Input.is_action_just_pressed("cheat_show_compasses"):
+		$PizzaCompass.cheat_enabled = true
+		$DevilCompass.cheat_enabled = true
+		$MomCompass.cheat_enabled = true
 
 
 
 func pickup_pizzas():
-	pizza_ammo = 13
-	current_destination = Game.map.pizza_factory.get_random_destination()
+	var max_pizzas :int  = 13
+	if pizza_ammo < max_pizzas:
+		pizza_ammo = max_pizzas
+		$HurryNoise.play()
 	if tip_tracker.has_method("reset_clock"):
 		tip_tracker.reset_clock()
-	$HurryNoise.play()
+	current_destination = Game.map.pizza_factory.get_random_destination()
 
 func meet_the_devil():
 	if state == states.driving:

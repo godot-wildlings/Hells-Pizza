@@ -20,6 +20,7 @@ func _ready() -> void:
 	Game.main = self
 	$CanvasLayer/IntroScreen.show()
 	level_container = $Levels
+	Game.stage = Game.stages.OVERWORLD
 
 	current_level = load_level("Overworld")
 
@@ -79,8 +80,9 @@ func _on_IntroScreen_completed():
 func _on_CutScene_completed(cutscene):
 	cutscene.hide()
 	if cutscene.name == "PickupMom":
+		Game.stage = Game.stages.ESCAPE
 		get_tree().set_pause(false)
-		print("Aggroing Demons now")
+		#print("Aggroing Demons now")
 		current_level.spawn_exit()
 		current_level.aggro_demons()
 		#push_warning(self.name + " cutscene completed, but no logic implemented yet.")
@@ -90,6 +92,7 @@ func _on_CutScene_completed(cutscene):
 
 
 func _on_UnderworldTransitionScreen_completed():
+	Game.stage = Game.stages.UNDERWORLD
 	$CanvasLayer/TransitionToUnderworld.hide()
 	call_deferred("move_to_underworld")
 

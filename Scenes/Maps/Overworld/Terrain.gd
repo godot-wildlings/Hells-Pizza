@@ -26,7 +26,7 @@ func _ready():
 	tiles = get_tileset().get_tiles_ids()
 	for tile in tiles:
 		tile_names.push_back(get_tileset().tile_get_name(tile))
-	print(self.name, " tile_names == ", tile_names)
+	#print(self.name, " tile_names == ", tile_names)
 	assemble_tile_groups()
 
 func assemble_tile_groups():
@@ -104,7 +104,7 @@ func create_map_edges():
 	# create new tiles in front of the camera
 
 
-	var pos = Game.camera_focus.get_global_position()
+	var pos = Game.camera_focus.get_global_position()/scale.x
 	#warning-ignore:unused_variable
 	var rot = Game.camera_focus.get_global_rotation()
 
@@ -116,7 +116,7 @@ func create_map_edges():
 
 
 func detect_tile(target_global_pos) -> int:
-	var cell_location : Vector2 = world_to_map(target_global_pos)
+	var cell_location : Vector2 = world_to_map(target_global_pos/scale.x)
 
 	draw_map(cell_location, Vector2(2,2))
 	var cell = get_cell(int(cell_location.x), int(cell_location.y))

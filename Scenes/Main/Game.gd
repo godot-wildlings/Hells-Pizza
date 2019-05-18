@@ -9,9 +9,12 @@ onready var demon_scenes = {
 	"Imp" : preload("res://Scenes/Maps/DeliveryDestination/Demons/Imp.tscn") as PackedScene
 }
 
+
+
 #warning-ignore:unused_class_variable
 var player : Node2D
 #warning-ignore:unused_class_variable
+
 var devil : Area2D
 #warning-ignore:unused_class_variable
 var mom : Area2D
@@ -25,3 +28,12 @@ var camera_focus : Node2D
 var map : Node
 #warning-ignore:unused_class_variable
 var main : Node
+#warning-ignore:unused_class_variable
+enum stages { OVERWORLD, UNDERWORLD, ESCAPE }
+#warning-ignore:unused_class_variable
+var stage = stages.OVERWORLD
+#warning-ignore:unused_class_variable
+var time_elapsed: float = 0
+
+func _process(delta):
+	time_elapsed += delta

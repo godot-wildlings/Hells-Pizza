@@ -3,6 +3,8 @@ extends RigidBody2D
 onready var steering = $Steering
 onready var engine = $Engine
 onready var radio = $CanvasLayer/Radio
+onready var brakes = $Brakes
+
 var collision_in_progress : bool = false
 var sinking_in_progress : bool = false
 
@@ -27,12 +29,13 @@ func _ready():
 
 #warning-ignore:unused_argument
 func _physics_process(delta):
+
 	if state == states.off:
 		return
 
 	var spd = engine.speed * terrain_speed_reduction
 
-	set_linear_velocity(Vector2.RIGHT.rotated(rotation) * spd)
+	set_linear_velocity(Vector2.RIGHT.rotated(rotation) * spd / brakes.braking_factor)
 	#var steering_factor : float = .01
 	var ratio = spd / engine.max_speed
 
@@ -40,7 +43,7 @@ func _physics_process(delta):
 	var eased_spd = sin(ratio*4)/2 + ratio
 	# graph: https://www.desmos.com/calculator/ourez6xxg9
 
-	var ang_vel = steering.wheel_angle * lerp(0, 6, eased_spd)
+	var ang_vel = steering.wheel_angle * lerp(0, 6, eased_spd) * brakes.braking_factor
 	set_angular_velocity(ang_vel)
 
 	detect_collisions()

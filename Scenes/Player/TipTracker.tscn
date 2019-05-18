@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/UI/BlackPixelTheme.tres" type="Theme" id=1]
 [ext_resource path="res://Scenes/Player/TipTracker.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/Player/clockFace.png" type="Texture" id=3]
-[ext_resource path="res://Art/Sprites/game_release.png" type="Texture" id=4]
-[ext_resource path="res://Scenes/Player/pizzaAmmoBar.png" type="Texture" id=5]
+[ext_resource path="res://Art/Sprites/ClockFace.png" type="Texture" id=3]
+[ext_resource path="res://Art/Sprites/ClockHand.png" type="Texture" id=4]
+[ext_resource path="res://Art/Sprites/game_release.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Player/pizzaAmmoBar.png" type="Texture" id=6]
 
 [node name="TipTracker" type="Control"]
 anchor_right = 1.0
@@ -44,6 +45,12 @@ rect_min_size = Vector2( 64, 64 )
 size_flags_horizontal = 4
 texture = ExtResource( 3 )
 
+[node name="ClockHand" type="Sprite" parent="PanelLeft/MarginContainer/VBox/StopWatch"]
+position = Vector2( 29.5196, 29.6761 )
+texture = ExtResource( 4 )
+centered = false
+offset = Vector2( -29.5196, -29.6761 )
+
 [node name="CashLabel" type="Label" parent="PanelLeft/MarginContainer/VBox"]
 margin_top = 163.0
 margin_right = 100.0
@@ -66,7 +73,7 @@ margin_right = 100.0
 margin_bottom = 345.0
 rect_min_size = Vector2( 64, 64 )
 size_flags_horizontal = 4
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 
 [node name="PriceLabel" type="Label" parent="PanelLeft/MarginContainer/VBox"]
 margin_top = 370.0
@@ -90,7 +97,7 @@ margin_bottom = 516.0
 size_flags_horizontal = 4
 max_value = 13.0
 value = 13.0
-texture_progress = ExtResource( 5 )
+texture_progress = ExtResource( 6 )
 fill_mode = 3
 
 [node name="PanelTop" type="PanelContainer" parent="."]

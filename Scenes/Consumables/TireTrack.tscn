@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Consumables/TireTrack.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Cars/tire.png" type="Texture" id=2]
+
+[node name="TireTrack" type="Node2D"]
+show_behind_parent = true
+script = ExtResource( 1 )
+
+[node name="DurationTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Sprite" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( 0.135277, -20.1562 )
+scale = Vector2( 2, 1 )
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.501961 )
+position = Vector2( -0.135277, 20.2915 )
+scale = Vector2( 2, 1 )
+texture = ExtResource( 2 )
+[connection signal="timeout" from="DurationTimer" to="." method="_on_DurationTimer_timeout"]

@@ -3,6 +3,7 @@ export var num_destinations : int = 150
 export var max_distance : float = 15000
 
 func _ready():
+	randomize()
 	call_deferred("spawn_houses")
 
 

@@ -21,7 +21,7 @@ func _on_Demon_body_entered(body):
 			explode()
 
 func aggro(object):
-	current_target = Game.player
+	current_target = object # probably the player
 	state = states.aggressive
 	$AttackTimer.start()
 

@@ -5,10 +5,13 @@ enum Types { TYPE_DEMON, TYPE_BUILDING }
 onready var type : int = Types.TYPE_BUILDING
 onready var building_container : Node2D = $Building
 onready var demon_container : Node2D = $Demon
+
+var my_building
+
 #var is_current_destination : bool = false
 
 # movement stuff for demons
-var my_demon : Area2D
+var my_demon
 var direction : float = 0.0
 var speed : float = 200.0
 var time_elapsed : float = 0.0
@@ -72,6 +75,7 @@ func _spawn_random_building() -> void:
 		building_container.remove_child(children)
 	var random_building : Building = random_scene.instance()
 	building_container.add_child(random_building)
+	my_building = random_building
 
 func _spawn_random_demon() -> void:
 	assert Game.demon_scenes.size() > 0
@@ -133,44 +137,68 @@ func _on_MoveTimer_timeout():
 	$MoveTimer.start()
 
 func request_pizza():
-	for building in building_container.get_children():
-		if building.has_node("DestinationAura"):
-			building.get_node("DestinationAura").show()
-	for demon in demon_container.get_children():
-		if demon.has_node("DestinationAura"):
-			demon.get_node("DestinationAura").show()
+	if Game.map.name == "Overworld":
+		my_building.get_node("DestinationAura").show()
+	elif Game.map.name == "Underworld":
+		my_demon.get_node("DestinationAura").show()
+
+#	for building in building_container.get_children():
+#		if building.has_node("DestinationAura"):
+#			building.get_node("DestinationAura").show()
+#	for demon in demon_container.get_children():
+#		if demon.has_node("DestinationAura"):
+#			demon.get_node("DestinationAura").show()
 
 func reject_pizza():
-	if state != states.fed:
+	if state == states.hungry:
 		var rejection_idx = randi()%$rejections.get_child_count()
 		var rejection = $rejections.get_children()[rejection_idx]
 		rejection.set_pitch_scale(rand_range(0.66, 1.33))
 		rejection.play()
+
 		state = states.fed
 		$HitStunTimer.start()
 
 func receive_pizza():
 	if state == states.fed:
 		return
+	else:
+		hide_delivery_auras()
+		pay_tip()
+		$HitStunTimer.start()
+		state = states.fed
 
-	for building in building_container.get_children():
-		if building.has_node("DestinationAura"):
-			building.get_node("DestinationAura").hide()
-	for demon in demon_container.get_children():
-		if demon.has_node("DestinationAura"):
-			demon.get_node("DestinationAura").hide()
 
-	$ThanksNoise.set_pitch_scale(rand_range(0.75, 1.33))
-	$ThanksNoise.play()
+func hide_delivery_auras():
+#	for building in building_container.get_children():
+#		if building.has_node("DestinationAura"):
+#			building.get_node("DestinationAura").hide()
+#	for demon in demon_container.get_children():
+#		if demon.has_node("DestinationAura"):
+#			demon.get_node("DestinationAura").hide()
+	if Game.map.name == "Overworld":
+		my_building.get_node("DestinationAura").hide()
+	elif Game.map.name == "Underworld":
+		my_demon.get_node("DestinationAura").hide()
 
-	var tip = rand_range(0.05, 0.50)
-	if Game.map.name == "Underworld":
-		tip *= 5.0
-	Game.player.receive_tip(tip)
-	$HitStunTimer.start()
-	state = states.fed
 
-	#$CollisionShape2D.call_deferred("set_disabled", true)
+func pay_tip():
+	var tip : float
+	if Game.player.tip_tracker.time_remaining > 0:
+		tip = rand_range(0.05, 0.50)
+		$ThanksNoise.set_pitch_scale(rand_range(0.75, 1.33))
+		$ThanksNoise.play()
+		if Game.map.name == "Underworld":
+			tip *= 5.0
+		Game.player.receive_tip(tip)
+	else:
+		tip = 0
+		$LateNoise.set_pitch_scale(rand_range(0.75, 1.33))
+		$LateNoise.play()
+		Game.player.receive_tip(0)
+
+
+
 
 func get_coordinates() -> Vector2:
 	if Game.map.name == "Underworld":

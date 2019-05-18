@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Maps/DeliveryDestination/DeliveryDestination.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Maps/DetectTile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Maps/DeliveryDestination/thanks.wav" type="AudioStream" id=3]
-[ext_resource path="res://Scenes/Maps/DeliveryDestination/NotMine.wav" type="AudioStream" id=4]
-[ext_resource path="res://Scenes/Maps/DeliveryDestination/NotMine2.wav" type="AudioStream" id=5]
+[ext_resource path="res://Scenes/Consumables/Late.wav" type="AudioStream" id=4]
+[ext_resource path="res://Scenes/Maps/DeliveryDestination/NotMine.wav" type="AudioStream" id=5]
+[ext_resource path="res://Scenes/Maps/DeliveryDestination/NotMine2.wav" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 121.759, 118.872 )
@@ -44,16 +45,19 @@ wait_time = 0.5
 stream = ExtResource( 3 )
 volume_db = 12.0
 
+[node name="LateNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+
 [node name="rejections" type="Node2D" parent="."]
 
 [node name="NotMineNoise" type="AudioStreamPlayer2D" parent="rejections"]
-stream = ExtResource( 4 )
+stream = ExtResource( 5 )
 
 [node name="NotMineNoise2" type="AudioStreamPlayer2D" parent="rejections"]
-stream = ExtResource( 5 )
+stream = ExtResource( 6 )
 
 [node name="NotMineNoise3" type="AudioStreamPlayer2D" parent="rejections"]
-stream = ExtResource( 5 )
+stream = ExtResource( 6 )
 
 [node name="MoveTimer" type="Timer" parent="."]
 one_shot = true
