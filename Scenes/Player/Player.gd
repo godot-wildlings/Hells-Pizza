@@ -7,7 +7,7 @@ extends Node2D
 
 
 #warning-ignore:unused_class_variable
-var current_destination : Area2D
+var current_destination
 
 
 enum states { walking, driving, paused, dead }
@@ -71,6 +71,9 @@ func deliver_pizza(area):
 func get_new_destination():
 #	print("old destination == ", current_destination)
 
+	if current_destination.has_method("deactivate"):
+		print("deactivating ", current_destination.name)
+		current_destination.deactivate()
 	if pizza_ammo > 0:
 		var i : int = 0
 		var new_destination = current_destination
@@ -145,9 +148,13 @@ func pickup_pizzas():
 	if pizza_ammo < max_pizzas:
 		pizza_ammo = max_pizzas
 		$HurryNoise.play()
-	if tip_tracker.has_method("reset_clock"):
-		tip_tracker.reset_clock()
-	current_destination = Game.map.pizza_factory.get_random_destination()
+
+		if tip_tracker.has_method("reset_clock"):
+			tip_tracker.reset_clock()
+		print(self.name, " current destination == ", current_destination.name )
+		if current_destination != Game.map.pizza_factory:
+			current_destination.deactivate()
+		get_new_destination()
 
 func meet_the_devil():
 	if state == states.driving:

@@ -149,6 +149,10 @@ func request_pizza():
 #		if demon.has_node("DestinationAura"):
 #			demon.get_node("DestinationAura").show()
 
+func deactivate():
+	call_deferred("hide_delivery_auras")
+
+
 func reject_pizza():
 	if state == states.hungry:
 		var rejection_idx = randi()%$rejections.get_child_count()
@@ -160,6 +164,10 @@ func reject_pizza():
 		$HitStunTimer.start()
 
 func receive_pizza():
+	print(self.name, " receiving pizza" )
+	print(self.name, " children in Building node: ", $Building.get_child_count())
+	print(self.name, " state == ", state)
+
 	if state == states.fed:
 		return
 	else:
@@ -170,12 +178,6 @@ func receive_pizza():
 
 
 func hide_delivery_auras():
-#	for building in building_container.get_children():
-#		if building.has_node("DestinationAura"):
-#			building.get_node("DestinationAura").hide()
-#	for demon in demon_container.get_children():
-#		if demon.has_node("DestinationAura"):
-#			demon.get_node("DestinationAura").hide()
 	if Game.map.name == "Overworld":
 		my_building.get_node("DestinationAura").hide()
 	elif Game.map.name == "Underworld":

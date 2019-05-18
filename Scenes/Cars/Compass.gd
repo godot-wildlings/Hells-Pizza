@@ -55,7 +55,8 @@ func _process(delta):
 					else:
 						look_at(Game.player.current_destination.get_global_position())
 				else:
-					push_warning("Compass can't find delivery destination. Was it queued_free?")
+					#push_warning("Compass can't find delivery destination. Was it queued_free?")
+
 					Game.player.current_destination = Game.map.pizza_factory
 
 		elif target == targets.DEVIL:
