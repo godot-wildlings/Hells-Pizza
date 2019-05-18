@@ -79,7 +79,9 @@ func _on_IntroScreen_completed():
 func _on_CutScene_completed(cutscene):
 	cutscene.hide()
 	if cutscene.name == "PickupMom":
+		print("Aggroing Demons now")
 		current_level.spawn_exit()
+		current_level.aggro_demons()
 		#push_warning(self.name + " cutscene completed, but no logic implemented yet.")
 	elif cutscene.name == "ReturnHome":
 		get_tree().quit()

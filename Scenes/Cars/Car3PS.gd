@@ -6,6 +6,9 @@ onready var radio = $CanvasLayer/Radio
 var collision_in_progress : bool = false
 var sinking_in_progress : bool = false
 
+export var health : int = 100
+
+
 enum states { on, off }
 var state = states.off
 
@@ -133,3 +136,7 @@ func _on_IgnitionNoise_finished():
 	# turn on the radio..
 	$CanvasLayer/Radio.turn_on()
 	$"CanvasLayer/Radio"._on_NextSongButton_pressed()
+
+func hit(damage):
+	health -= damage
+	# should probably illustrate this with visible crash damage

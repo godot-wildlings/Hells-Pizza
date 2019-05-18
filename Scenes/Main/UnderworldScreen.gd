@@ -6,6 +6,7 @@ signal completed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$TabContainer/Page2/VBoxContainer/TextureRect/LoadingLabel.hide()
 	call_deferred("deferred_ready")
 
 func deferred_ready():
@@ -30,8 +31,12 @@ func _on_NextPageButton_pressed():
 
 
 func _on_ToUnderworldButton_pressed():
+	$TabContainer/Page2/VBoxContainer/TextureRect/LoadingLabel.show()
 	Game.main.play_click_noise()
-	emit_signal("completed")
+	$TabContainer/Page2/VBoxContainer/TextureRect/DelayTimer.start()
+
+
+
 
 func _on_ToOverworldButton_pressed():
 	Game.main.play_click_noise()
@@ -44,3 +49,7 @@ func _on_ToOverworldButton_pressed():
 func _on_Button_hover():
 	Game.main.play_hover_noise()
 
+
+
+func _on_DelayTimer_timeout():
+	emit_signal("completed")

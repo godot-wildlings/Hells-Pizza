@@ -26,7 +26,9 @@ func spawn_exit():
 	add_child(new_exit)
 	new_exit.start()
 
-
+func aggro_demons():
+	print(self.name, " aggroing demons now")
+	$DeliveryDestinations.aggro_demons()
 
 func add_car(car_node):
 	$Cars.add_child(car_node)

@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Main/UnderworldScreen.gd" type="Script" id=1]
 [ext_resource path="res://Art/Sprites/devil.png" type="Texture" id=2]
 [ext_resource path="res://Art/Sprites/luficers_car.png" type="Texture" id=3]
+[ext_resource path="res://Fonts/Press_Start_2P/PressStart2P-Regular.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 96
+font_data = ExtResource( 4 )
 
 [node name="TransitionToUnderworld" type="PopupPanel"]
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -19,6 +25,7 @@ margin_bottom = -4.0
 tabs_visible = false
 
 [node name="Page1" type="MarginContainer" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -43,6 +50,7 @@ custom_constants/separation = 25
 alignment = 1
 
 [node name="Label" type="Label" parent="TabContainer/Page1/VBoxContainer"]
+visible = false
 margin_right = 928.0
 margin_bottom = 31.0
 size_flags_horizontal = 3
@@ -82,7 +90,6 @@ enabled_focus_mode = 0
 text = "I say \"Hell No!\" Screw You, Satan"
 
 [node name="Page2" type="MarginContainer" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -125,6 +132,19 @@ texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
 
+[node name="LoadingLabel" type="Label" parent="TabContainer/Page2/VBoxContainer/TextureRect"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+text = "LOADING"
+align = 1
+valign = 1
+
+[node name="DelayTimer" type="Timer" parent="TabContainer/Page2/VBoxContainer/TextureRect"]
+wait_time = 0.2
+one_shot = true
+
 [node name="Label2" type="Label" parent="TabContainer/Page2/VBoxContainer"]
 visible = false
 margin_top = 462.0
@@ -159,6 +179,7 @@ enabled_focus_mode = 0
 text = "No Thanks. I like My Mom's Car. I'd rather not go to hell."
 [connection signal="mouse_entered" from="TabContainer/Page1/VBoxContainer/NextPageButton" to="." method="_on_Button_hover"]
 [connection signal="pressed" from="TabContainer/Page1/VBoxContainer/NextPageButton" to="." method="_on_NextPageButton_pressed"]
+[connection signal="timeout" from="TabContainer/Page2/VBoxContainer/TextureRect/DelayTimer" to="." method="_on_DelayTimer_timeout"]
 [connection signal="mouse_entered" from="TabContainer/Page2/VBoxContainer/HBoxContainer/ToUnderworldButton" to="." method="_on_Button_hover"]
 [connection signal="pressed" from="TabContainer/Page2/VBoxContainer/HBoxContainer/ToUnderworldButton" to="." method="_on_ToUnderworldButton_pressed"]
 [connection signal="mouse_entered" from="TabContainer/Page2/VBoxContainer/HBoxContainer/ToOverworldButton" to="." method="_on_Button_hover"]

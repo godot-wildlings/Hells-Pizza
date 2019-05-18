@@ -30,7 +30,6 @@ theme = ExtResource( 3 )
 theme = ExtResource( 3 )
 
 [node name="PickupMom" parent="CanvasLayer" instance=ExtResource( 6 )]
-visible = false
 theme = ExtResource( 3 )
 
 [node name="ReturnHome" parent="CanvasLayer" instance=ExtResource( 7 )]

@@ -19,6 +19,7 @@ onready var tip_tracker = $CanvasLayer/TipTracker
 var pizza_ammo : int = 0
 var car : Node2D # probably rigidbody, but we might switch to kinematic
 
+
 signal met_the_devil(cash_on_hand)
 signal met_mom_in_hell()
 signal found_exit_from_hell()

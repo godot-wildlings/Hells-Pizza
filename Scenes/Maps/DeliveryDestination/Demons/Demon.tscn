@@ -99,5 +99,12 @@ wait_time = 5.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/explode = SubResource( 2 )
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="Fireballs" type="Node2D" parent="."]
 [connection signal="body_entered" from="." to="." method="_on_Demon_body_entered"]
 [connection signal="timeout" from="Death/DeathTimer" to="." method="_on_DeathTimer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_AttackTimer_timeout"]

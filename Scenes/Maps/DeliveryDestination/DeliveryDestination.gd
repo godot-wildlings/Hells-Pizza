@@ -12,6 +12,8 @@ var my_demon : Area2D
 var direction : float = 0.0
 var speed : float = 200.0
 var time_elapsed : float = 0.0
+var current_target : Node2D # probably the player
+
 
 func _ready():
 	hide()
@@ -98,15 +100,29 @@ func _on_DestructionTimer_timeout():
 func _physics_process(delta):
 	time_elapsed += delta
 	if type == Types.TYPE_DEMON:
-		if my_demon.state == my_demon.states.alive:
+		if my_demon.state != my_demon.states.dead:
 			move_around_like_a_demon(delta)
 
 func move_around_like_a_demon(delta):
 	if $MoveTimer.is_stopped():
 		$MoveTimer.start()
 
-	var velocity = Vector2.RIGHT.rotated(direction) * speed + Vector2.UP.rotated(direction) * speed * sin(time_elapsed)
-	set_global_position(get_global_position() + velocity * delta)
+	var my_pos = get_global_position()
+
+	var velocity : Vector2
+	if my_demon.state == my_demon.states.passive:
+		velocity = Vector2.RIGHT.rotated(direction) * speed + Vector2.UP.rotated(direction) * speed * sin(time_elapsed)
+	elif my_demon.state == my_demon.states.aggressive:
+		velocity = (current_target.get_global_position() - my_pos).normalized() * speed / 2 + Vector2.RIGHT.rotated(direction) * speed + Vector2.UP.rotated(direction) * speed/2 * sin(time_elapsed)
+
+	set_global_position(my_pos + velocity * delta)
+
+func aggro(object):
+	current_target = object
+	if my_demon.has_method("aggro"):
+		my_demon.aggro(object)
+
+
 
 func _on_MoveTimer_timeout():
 	direction = rand_range(0, 2*PI)

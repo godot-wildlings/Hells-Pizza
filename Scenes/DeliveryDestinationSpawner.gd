@@ -1,5 +1,5 @@
 extends Node2D
-export var num_destinations : int = 500
+export var num_destinations : int = 100
 export var max_distance : float = 15000
 
 func _ready():
@@ -27,7 +27,11 @@ func spawn_delivery_destination():
 	new_destination.set_global_position(new_position)
 
 
-
+func aggro_demons():
+	print(self.name, " aggroing demons now")
+	for destination in get_children():
+		if destination.has_method("aggro"):
+			destination.aggro(Game.player)
 
 
 

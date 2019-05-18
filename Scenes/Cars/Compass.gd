@@ -8,6 +8,10 @@ var state = states.off
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if target == targets.MOM and Game.map.name != "Underworld":
+		hide()
+	elif target == targets.DEVIL and Game.map.name != "Overworld":
+		hide()
 
 	pass # Replace with function body.
 
