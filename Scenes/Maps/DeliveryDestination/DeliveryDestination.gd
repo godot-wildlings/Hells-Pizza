@@ -110,6 +110,18 @@ func _physics_process(delta):
 		if my_demon.state != my_demon.states.dead:
 			move_around_like_a_demon(delta)
 
+	# HAX: building's aren't deactivating properly when pizzas are picked up and delivered
+	if Game.ticks % 30 == 0:
+		var aura
+		if Game.map.name == "Overworld":
+			aura = my_building.get_node("DestinationAura")
+		elif Game.map.name == "Underworld":
+			aura = my_demon.get_node("DestinationAura")
+		if aura.is_visible() and Game.player.current_destination != self:
+			aura.hide()
+
+
+
 func move_around_like_a_demon(delta):
 	if $MoveTimer.is_stopped():
 		$MoveTimer.start()
@@ -164,9 +176,9 @@ func reject_pizza():
 		$HitStunTimer.start()
 
 func receive_pizza():
-	print(self.name, " receiving pizza" )
-	print(self.name, " children in Building node: ", $Building.get_child_count())
-	print(self.name, " state == ", state)
+#	print(self.name, " receiving pizza" )
+#	print(self.name, " children in Building node: ", $Building.get_child_count())
+#	print(self.name, " state == ", state)
 
 	if state == states.fed:
 		return

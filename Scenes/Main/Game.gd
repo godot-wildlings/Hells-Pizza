@@ -34,6 +34,10 @@ enum stages { OVERWORLD, UNDERWORLD, ESCAPE }
 var stage = stages.OVERWORLD
 #warning-ignore:unused_class_variable
 var time_elapsed: float = 0
+#warning-ignore:unused_class_variable
+var ticks: int = 0
+
 
 func _process(delta):
+	ticks += 1
 	time_elapsed += delta
