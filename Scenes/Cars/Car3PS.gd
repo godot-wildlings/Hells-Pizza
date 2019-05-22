@@ -89,6 +89,29 @@ func detect_collisions():
 		collision_in_progress = true
 		engine.speed = 0.0
 		Game.player.drop_pizza()
+		health -= 25
+		illustrate_damage()
+
+func illustrate_damage():
+	var tween = get_node("Tween")
+	tween.interpolate_property($Sprite, "modulate",
+		Color.white, Color.red, 0.25,
+		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
+	yield(tween, "tween_completed")
+	tween.interpolate_property($Sprite, "modulate",
+		Color.red, Color.white, 0.25,
+		Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
+
+
+	if $Sprite.get_hframes() > 0:
+		if health > 50 and health <= 75:
+			$Sprite.set_frame(1)
+		if health <= 50:
+			$Sprite.set_frame(2)
+
+
 
 func detect_lakes():
 	if not $DetectTile.is_safe():

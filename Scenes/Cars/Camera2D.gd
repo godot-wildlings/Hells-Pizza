@@ -27,7 +27,8 @@ func _process(delta):
 	#			set_h_offset(0)
 				var speed = Game.player.car.engine.speed
 				var max_speed = Game.player.car.engine.max_speed
-				position = Vector2(0.35 * speed, 0)
+
+				position = lerp(position, Vector2(0.35 * speed, 0), 0.8)
 
 				var zoom_factor = lerp(1.0, 2.5, speed / max_speed)
 				DesiredZoom = Vector2(zoom_factor, zoom_factor)

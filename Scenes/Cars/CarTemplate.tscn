@@ -98,6 +98,8 @@ texture = ExtResource( 13 )
 [node name="BumpyNoise" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 14 )
 volume_db = -15.0
+
+[node name="Tween" type="Tween" parent="."]
 [connection signal="timeout" from="Brakes/SkidMarkTimer" to="Brakes" method="_on_SkidMarkTimer_timeout"]
 [connection signal="timeout" from="Steering/RecenterWheelTimer" to="Steering" method="_on_RecenterWheelTimer_timeout"]
 [connection signal="timeout" from="HitStunTimer" to="." method="_on_HitStunTimer_timeout"]
