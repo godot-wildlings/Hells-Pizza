@@ -17,8 +17,9 @@ func _ready():
 func spawn_portal_to_underworld():
 	var portal_scene = load("res://Scenes/Maps/UnderworldPortal/UnderworldPortal.tscn")
 	var new_portal = portal_scene.instance()
-	$NPCs.add_child(new_portal)
+	$Portals.add_child(new_portal)
 	new_portal.start()
+
 
 func add_car(car_node):
 	$Cars.add_child(car_node)

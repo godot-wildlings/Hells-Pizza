@@ -19,7 +19,7 @@ onready var tip_tracker = $CanvasLayer/TipTracker
 var pizza_ammo : int = 0
 var car : Node2D # probably rigidbody, but we might switch to kinematic
 
-
+var delivery_number: int = 0
 
 signal met_the_devil(cash_on_hand)
 signal met_mom_in_hell()
@@ -67,8 +67,22 @@ func deliver_pizza(area):
 		cash += rand_range(0.05, 0.50)
 		current_destination = Game.map.pizza_factory
 		area.receive_pizza()
+		delivery_number += 1
+
+func deliver_to_satan():
+	if current_destination.has_method("deactivate"):
+		current_destination.deactivate()
+	current_destination = Game.devil
 
 func get_new_destination():
+	if (
+			Game.map.name == "Overworld"
+			and delivery_number % 5 == 0
+			and delivery_number > 0
+	):
+		deliver_to_satan()
+		return
+
 #	print("old destination == ", current_destination)
 
 	if current_destination.has_method("deactivate"):

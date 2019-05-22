@@ -18,12 +18,12 @@ script = ExtResource( 3 )
 
 [node name="TireTracks" type="Node2D" parent="."]
 
-[node name="NPCs" type="Node2D" parent="."]
-
 [node name="Cars" type="Node2D" parent="."]
 
 [node name="Pedestrians" type="Node2D" parent="."]
 
 [node name="DeliveryDestinations" parent="." instance=ExtResource( 4 )]
+
+[node name="Portals" type="YSort" parent="."]
 
 [node name="PizzaFactory" parent="." instance=ExtResource( 5 )]

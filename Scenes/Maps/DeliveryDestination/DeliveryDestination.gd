@@ -77,6 +77,9 @@ func _spawn_random_building() -> void:
 	building_container.add_child(random_building)
 	my_building = random_building
 
+
+
+
 func _spawn_random_demon() -> void:
 	assert Game.demon_scenes.size() > 0
 	var random_key : String = _get_random_dict_key(Game.demon_scenes)
