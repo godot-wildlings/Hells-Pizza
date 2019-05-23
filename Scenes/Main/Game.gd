@@ -2,8 +2,10 @@ extends Node
 
 #warning-ignore:unused_class_variable
 onready var building_scenes = {
-	"Skyscraper" : preload("res://Scenes/Maps/DeliveryDestination/Buildings/Skyscraper.tscn") as PackedScene
+	"Skyscraper" : preload("res://Scenes/Maps/DeliveryDestination/Buildings/Skyscraper.tscn") as PackedScene,
+	"House1" : preload("res://Scenes/Maps/DeliveryDestination/Buildings/House1.tscn") as PackedScene
 }
+
 #warning-ignore:unused_class_variable
 onready var demon_scenes = {
 	"Imp" : preload("res://Scenes/Maps/DeliveryDestination/Demons/Imp.tscn") as PackedScene

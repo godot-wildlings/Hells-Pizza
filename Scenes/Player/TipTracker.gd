@@ -2,7 +2,7 @@ extends Control
 
 var ticks : int = 0
 
-var delivery_time_allowed : float = 60.0
+var delivery_time_allowed : float = 120.0
 var time_remaining : float = delivery_time_allowed
 
 onready var cash_on_hand = $PanelLeft/MarginContainer/VBox/CashOnHand
@@ -54,7 +54,7 @@ func _process(delta):
 			else:
 				instructions_label.set_text("Follow the green arrow to your delivery destination.\nClick the mouse to deliver a pizza.")
 		else:
-			instructions_label.set_text("When you're out of pizzas, you'll be guided back to the pizzeria.")
+			instructions_label.set_text("You're late. Dump your pizzas and you'll be guided back to the pizzeria.")
 	elif stage == stages.ESCAPE:
 		instructions_label.set_text("Find the portal to escape Hell! Follow the blue arrow.")
 
