@@ -1,0 +1,140 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/UI/EscPanel.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Maps/Underworld/BGMusic/UnderworldLoop1.ogg" type="AudioStream" id=2]
+
+[node name="EscPanel" type="PopupPanel"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+custom_constants/margin_right = 40
+custom_constants/margin_top = 40
+custom_constants/margin_left = 40
+custom_constants/margin_bottom = 40
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 976.0
+margin_bottom = 552.0
+
+[node name="LeftSide" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_right = 481.0
+margin_bottom = 512.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/LeftSide"]
+margin_right = 481.0
+margin_bottom = 235.0
+text = "Thanks for playing Hell's Pizza.
+
+Game by:  Plexsoup, Caevv, DoggieBalloon
+
+Built for TigerJam2
+
+Using: Godot, Audacity, Gimp, Inkscape, Aseprite, Rytmik Studio, Magix Music Maker, LMMS
+
+Public Domain Music: Downhearted Blues by Son House and Bessie Smith, Death Letter Blues by Son House
+
+Fonts from google.
+"
+autowrap = true
+
+[node name="RightSide" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+margin_left = 485.0
+margin_right = 966.0
+margin_bottom = 512.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 50
+alignment = 1
+
+[node name="QuitButton" type="Button" parent="MarginContainer/HBoxContainer/RightSide"]
+margin_left = 140.0
+margin_top = 131.0
+margin_right = 340.0
+margin_bottom = 181.0
+rect_min_size = Vector2( 200, 50 )
+focus_mode = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+enabled_focus_mode = 0
+text = "Quit"
+
+[node name="ResumeButton" type="Button" parent="MarginContainer/HBoxContainer/RightSide"]
+margin_left = 140.0
+margin_top = 231.0
+margin_right = 340.0
+margin_bottom = 281.0
+rect_min_size = Vector2( 200, 50 )
+focus_mode = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+enabled_focus_mode = 0
+text = "Resume"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/RightSide"]
+margin_top = 331.0
+margin_right = 481.0
+margin_bottom = 381.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="VolLabel" type="Label" parent="MarginContainer/HBoxContainer/RightSide/HBoxContainer"]
+margin_left = 106.0
+margin_top = 18.0
+margin_right = 155.0
+margin_bottom = 32.0
+size_flags_horizontal = 4
+text = "Volume"
+align = 1
+
+[node name="VolSlider" type="HSlider" parent="MarginContainer/HBoxContainer/RightSide/HBoxContainer"]
+margin_left = 175.0
+margin_right = 375.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 200, 50 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.1
+value = 0.5
+
+[node name="QuitScreen" type="Panel" parent="MarginContainer"]
+visible = false
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 976.0
+margin_bottom = 552.0
+
+[node name="Label" type="Label" parent="MarginContainer/QuitScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Thanks for playing!
+Plexsoup, Caevv, DoggieBalloon"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="VolumeTest" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -9.0
+[connection signal="about_to_show" from="." to="." method="_on_EscPanel_about_to_show"]
+[connection signal="popup_hide" from="." to="." method="_on_EscPanel_popup_hide"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/RightSide/QuitButton" to="." method="_on_Button_hover"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/RightSide/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/RightSide/ResumeButton" to="." method="_on_Button_hover"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/RightSide/ResumeButton" to="." method="_on_ResumeButton_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/HBoxContainer/RightSide/HBoxContainer/VolSlider" to="." method="_on_VolSlider_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/HBoxContainer/RightSide/HBoxContainer/VolSlider" to="." method="_on_VolSlider_mouse_exited"]
+[connection signal="value_changed" from="MarginContainer/HBoxContainer/RightSide/HBoxContainer/VolSlider" to="." method="_on_VolSlider_value_changed"]

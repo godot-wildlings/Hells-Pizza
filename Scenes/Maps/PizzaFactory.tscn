@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Maps/PizzaFactory.gd" type="Script" id=1]
+[ext_resource path="res://Art/Sprites/pizzeria.png" type="Texture" id=2]
+[ext_resource path="res://Art/Sprites/pizzeria_shadow-dark.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 142.378, 57.4443 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 258.145
+
+[node name="PizzaFactory" type="Area2D"]
+position = Vector2( -73.5011, -55.0158 )
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -131.543, -97.4963 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 2 )
+offset = Vector2( 23, 12 )
+
+[node name="SpriteShadow" type="Sprite" parent="."]
+position = Vector2( -131.777, -97.8486 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 3 )
+offset = Vector2( 23, 12 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -33.2167
+margin_top = 31.2936
+margin_right = 34.7833
+margin_bottom = 45.2936
+text = "Pizza Shop"
+align = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( -129.235, -86.5878 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -2.58472, 23.2624 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -73.4987, -41.6758 )
+shape = SubResource( 2 )

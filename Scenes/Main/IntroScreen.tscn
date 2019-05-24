@@ -1,0 +1,219 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Main/IntroScreen.gd" type="Script" id=1]
+[ext_resource path="res://Art/Sprites/lazy_gamer.png" type="Texture" id=2]
+[ext_resource path="res://Art/Sprites/game_release.png" type="Texture" id=3]
+[ext_resource path="res://Art/Sprites/job_ad.png" type="Texture" id=4]
+
+[node name="IntroScreen" type="PopupPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tabs_visible = false
+
+[node name="Page1" type="MarginContainer" parent="TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 8.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 40
+custom_constants/margin_top = 40
+custom_constants/margin_left = 40
+custom_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Page1"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 968.0
+margin_bottom = 540.0
+custom_constants/separation = 25
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Page1/VBoxContainer"]
+margin_right = 928.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "This is the best timeline. Our hero enjoys life on the couch, eating cheese puffs and playing video games."
+align = 1
+autowrap = true
+
+[node name="Label2" type="Label" parent="TabContainer/Page1/VBoxContainer"]
+margin_top = 39.0
+margin_right = 928.0
+margin_bottom = 53.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "He wants for nothing."
+align = 1
+autowrap = true
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Page1/VBoxContainer"]
+margin_top = 78.0
+margin_right = 928.0
+margin_bottom = 455.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="NextPageButton" type="Button" parent="TabContainer/Page1/VBoxContainer"]
+margin_left = 401.0
+margin_top = 480.0
+margin_right = 526.0
+margin_bottom = 500.0
+focus_mode = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+enabled_focus_mode = 0
+text = "Nothing, except..."
+
+[node name="Page2" type="MarginContainer" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 8.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 40
+custom_constants/margin_top = 40
+custom_constants/margin_left = 40
+custom_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Page2"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 968.0
+margin_bottom = 540.0
+custom_constants/separation = 25
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Page2/VBoxContainer"]
+margin_right = 928.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "What is this? A new release? MUST HAVE!"
+align = 1
+autowrap = true
+
+[node name="Label2" type="Label" parent="TabContainer/Page2/VBoxContainer"]
+margin_top = 39.0
+margin_right = 928.0
+margin_bottom = 53.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "But I have no money."
+align = 1
+autowrap = true
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/Page2/VBoxContainer"]
+margin_top = 78.0
+margin_right = 928.0
+margin_bottom = 455.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="NextPageButton" type="Button" parent="TabContainer/Page2/VBoxContainer"]
+margin_left = 396.0
+margin_top = 480.0
+margin_right = 532.0
+margin_bottom = 500.0
+focus_mode = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+enabled_focus_mode = 0
+text = "Guess I need a job."
+
+[node name="Page3" type="MarginContainer" parent="TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 8.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 40
+custom_constants/margin_top = 40
+custom_constants/margin_left = 40
+custom_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Page3"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 968.0
+margin_bottom = 540.0
+custom_constants/separation = 25
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Page3/VBoxContainer"]
+margin_right = 928.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Fine. I'll deliver pizzas."
+align = 1
+autowrap = true
+
+[node name="TextureRect3" type="TextureRect" parent="TabContainer/Page3/VBoxContainer"]
+margin_top = 39.0
+margin_right = 928.0
+margin_bottom = 455.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="Label2" type="Label" parent="TabContainer/Page3/VBoxContainer"]
+visible = false
+margin_top = 428.0
+margin_right = 928.0
+margin_bottom = 476.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "I'll just borrow mom's car.
+
+"
+align = 1
+autowrap = true
+
+[node name="NextPageButton" type="Button" parent="TabContainer/Page3/VBoxContainer"]
+margin_left = 374.0
+margin_top = 480.0
+margin_right = 553.0
+margin_bottom = 500.0
+focus_mode = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+enabled_focus_mode = 0
+text = "I'll just borrow mom's car."
+[connection signal="mouse_entered" from="TabContainer/Page1/VBoxContainer/NextPageButton" to="." method="_on_Button_hover"]
+[connection signal="pressed" from="TabContainer/Page1/VBoxContainer/NextPageButton" to="." method="_on_NextPageButton_pressed"]
+[connection signal="mouse_entered" from="TabContainer/Page2/VBoxContainer/NextPageButton" to="." method="_on_Button_hover"]
+[connection signal="pressed" from="TabContainer/Page2/VBoxContainer/NextPageButton" to="." method="_on_NextPageButton_pressed"]
+[connection signal="mouse_entered" from="TabContainer/Page3/VBoxContainer/NextPageButton" to="." method="_on_Button_hover"]
+[connection signal="pressed" from="TabContainer/Page3/VBoxContainer/NextPageButton" to="." method="_on_NextPageButton_pressed"]

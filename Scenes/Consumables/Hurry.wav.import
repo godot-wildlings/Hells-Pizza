@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Hurry.wav-43be344870257c47e271203938a1ccff.sample"
+
+[deps]
+
+source_file="res://Scenes/Consumables/Hurry.wav"
+dest_files=[ "res://.import/Hurry.wav-43be344870257c47e271203938a1ccff.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

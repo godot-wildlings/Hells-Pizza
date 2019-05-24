@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/DeathLetterBlues.ogg-b68c36710785ae397aa29b2e76ec0e6f.oggstr"
+
+[deps]
+
+source_file="res://Scenes/Maps/Overworld/BGMusic/DeathLetterBlues.ogg"
+dest_files=[ "res://.import/DeathLetterBlues.ogg-b68c36710785ae397aa29b2e76ec0e6f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

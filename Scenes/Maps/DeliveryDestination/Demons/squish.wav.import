@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/squish.wav-7f7a680657b40cb6078088b854a7f5fb.sample"
+
+[deps]
+
+source_file="res://Scenes/Maps/DeliveryDestination/Demons/squish.wav"
+dest_files=[ "res://.import/squish.wav-7f7a680657b40cb6078088b854a7f5fb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

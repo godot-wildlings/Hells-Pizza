@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/Maps/DeliveryDestination/DeliveryDestination.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Maps/DetectTile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Maps/DeliveryDestination/thanks.wav" type="AudioStream" id=3]
+[ext_resource path="res://Scenes/Consumables/Late.wav" type="AudioStream" id=4]
+[ext_resource path="res://Scenes/Maps/DeliveryDestination/NotMine.wav" type="AudioStream" id=5]
+[ext_resource path="res://Scenes/Maps/DeliveryDestination/NotMine2.wav" type="AudioStream" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 121.759, 118.872 )
+
+[node name="DeliveryDestination" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="Building" type="Node2D" parent="."]
+
+[node name="Demon" type="Node2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="DetectTile" parent="." instance=ExtResource( 2 )]
+visible = false
+
+[node name="Label" type="Label" parent="."]
+margin_left = -27.5419
+margin_top = 71.2497
+margin_right = 23.4581
+margin_bottom = 85.2497
+text = "House"
+align = 1
+
+[node name="ScanTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="DestructionTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="RevealTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="ThanksNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = 12.0
+
+[node name="LateNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+
+[node name="rejections" type="Node2D" parent="."]
+
+[node name="NotMineNoise" type="AudioStreamPlayer2D" parent="rejections"]
+stream = ExtResource( 5 )
+
+[node name="NotMineNoise2" type="AudioStreamPlayer2D" parent="rejections"]
+stream = ExtResource( 6 )
+
+[node name="NotMineNoise3" type="AudioStreamPlayer2D" parent="rejections"]
+stream = ExtResource( 6 )
+
+[node name="MoveTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HitStunTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+[connection signal="timeout" from="ScanTimer" to="." method="_on_ScanTimer_timeout"]
+[connection signal="timeout" from="DestructionTimer" to="." method="_on_DestructionTimer_timeout"]
+[connection signal="timeout" from="RevealTimer" to="." method="_on_RevealTimer_timeout"]
+[connection signal="timeout" from="MoveTimer" to="." method="_on_MoveTimer_timeout"]
+[connection signal="timeout" from="HitStunTimer" to="." method="_on_HitStunTimer_timeout"]

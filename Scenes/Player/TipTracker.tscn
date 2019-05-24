@@ -1,0 +1,121 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/UI/BlackPixelTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Scenes/Player/TipTracker.gd" type="Script" id=2]
+[ext_resource path="res://Art/Sprites/ClockFace.png" type="Texture" id=3]
+[ext_resource path="res://Art/Sprites/ClockHand.png" type="Texture" id=4]
+[ext_resource path="res://Art/Sprites/game_release.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Player/pizzaAmmoBar.png" type="Texture" id=6]
+
+[node name="TipTracker" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="PanelLeft" type="PanelContainer" parent="."]
+anchor_bottom = 1.0
+margin_right = 14.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelLeft"]
+margin_right = 120.0
+margin_bottom = 600.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 5
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 5
+
+[node name="VBox" type="VBoxContainer" parent="PanelLeft/MarginContainer"]
+margin_left = 10.0
+margin_top = 5.0
+margin_right = 110.0
+margin_bottom = 595.0
+custom_constants/separation = 25
+alignment = 1
+
+[node name="StopWatch" type="TextureRect" parent="PanelLeft/MarginContainer/VBox"]
+self_modulate = Color( 1, 1, 1, 0.501961 )
+show_behind_parent = true
+margin_left = 18.0
+margin_top = 74.0
+margin_right = 82.0
+margin_bottom = 138.0
+rect_min_size = Vector2( 64, 64 )
+size_flags_horizontal = 4
+texture = ExtResource( 3 )
+
+[node name="ClockHand" type="Sprite" parent="PanelLeft/MarginContainer/VBox/StopWatch"]
+position = Vector2( 29.5196, 29.6761 )
+texture = ExtResource( 4 )
+centered = false
+offset = Vector2( -29.5196, -29.6761 )
+
+[node name="CashLabel" type="Label" parent="PanelLeft/MarginContainer/VBox"]
+margin_top = 163.0
+margin_right = 100.0
+margin_bottom = 179.0
+text = "Cash:"
+align = 1
+
+[node name="CashOnHand" type="Label" parent="PanelLeft/MarginContainer/VBox"]
+margin_top = 204.0
+margin_right = 100.0
+margin_bottom = 220.0
+text = "$0.00"
+align = 1
+
+[node name="Cartridge" type="TextureRect" parent="PanelLeft/MarginContainer/VBox"]
+self_modulate = Color( 1, 1, 1, 0.501961 )
+show_behind_parent = true
+margin_top = 245.0
+margin_right = 100.0
+margin_bottom = 345.0
+rect_min_size = Vector2( 64, 64 )
+size_flags_horizontal = 4
+texture = ExtResource( 5 )
+
+[node name="PriceLabel" type="Label" parent="PanelLeft/MarginContainer/VBox"]
+margin_top = 370.0
+margin_right = 100.0
+margin_bottom = 386.0
+text = "Price:"
+align = 1
+
+[node name="Cost" type="Label" parent="PanelLeft/MarginContainer/VBox"]
+margin_top = 411.0
+margin_right = 100.0
+margin_bottom = 427.0
+text = "$79.95"
+align = 1
+
+[node name="PizzaAmmo" type="TextureProgress" parent="PanelLeft/MarginContainer/VBox"]
+margin_left = 18.0
+margin_top = 452.0
+margin_right = 82.0
+margin_bottom = 516.0
+size_flags_horizontal = 4
+max_value = 13.0
+value = 13.0
+texture_progress = ExtResource( 6 )
+fill_mode = 3
+
+[node name="PanelTop" type="PanelContainer" parent="."]
+anchor_right = 1.0
+margin_bottom = 14.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelTop"]
+margin_right = 1024.0
+margin_bottom = 26.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+
+[node name="InstructionLabel" type="Label" parent="PanelTop/MarginContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 1019.0
+margin_bottom = 21.0
+text = "Follow the Green Arrow"
+align = 1

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/fwoosh2.wav-a4a07ee99657fdaa75d5cd9198fca777.sample"
+
+[deps]
+
+source_file="res://Scenes/Projectiles/fwoosh2.wav"
+dest_files=[ "res://.import/fwoosh2.wav-a4a07ee99657fdaa75d5cd9198fca777.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

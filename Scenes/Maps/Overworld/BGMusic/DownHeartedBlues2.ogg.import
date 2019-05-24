@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/DownHeartedBlues2.ogg-b07a9418ceff16e95038d3b144603711.oggstr"
+
+[deps]
+
+source_file="res://Scenes/Maps/Overworld/BGMusic/DownHeartedBlues2.ogg"
+dest_files=[ "res://.import/DownHeartedBlues2.ogg-b07a9418ceff16e95038d3b144603711.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
